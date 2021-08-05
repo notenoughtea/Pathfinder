@@ -1,18 +1,17 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import MainGreeting from './components/MainGreeting.js/MainGreeting';
+ import Map from "./components/Map/Map"
+  
+  
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom"; 
 
-function App() {
-
+  function App() {
   return (
-    <> 
-    </>
+    <div className="App">
+      <MainGreeting/>
+      <Map/>
+    </div>
   );
-}
+  }
 
 export default App;
