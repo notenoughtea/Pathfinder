@@ -4,9 +4,15 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { axiosCards } from './store/cardSlice';
-import Toplist from './components/Toplist/Toplist';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
+import { axiosCards } from './store/cardSlice';
+import Cardlist from './components/Cardlist/Cardlist';
+import OneCard from './components/OneCard/OneCard';
 
 function App() {
   const { status, error } = useSelector(state => state.cards);
@@ -18,11 +24,19 @@ function App() {
 
   return (
     <div className="App">
+      <Router>
       {status === 'loading' && <h2>Loading...</h2>}
-      {error && <h2>An error occured: {error}</h2>}
-      <Toplist />
-      {/* <MainGreeting/>
+          {error && <h2>An error occured: {error}</h2>}
+          <Cardlist/>
+        <Switch>
+          
+          {/* <MainGreeting/>
       <Map/> */}
+          <Route exact path="/card/:id">
+            <OneCard />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
