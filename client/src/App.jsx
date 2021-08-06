@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,7 +11,7 @@ import MainGreeting from './components/MainGreeting.js/MainGreeting';
 
 function App() {
   return (
-    <>
+      <React.Fragment>
       <Switch>
         <Route path="/signup">
           <SignUp></SignUp>
@@ -23,8 +24,10 @@ function App() {
            <div className="App"/>
         <MapContainer/>
         </Route>
-      </Switch>
-    </>
-
+      </Switch>    
+      </React.Fragment>
+    
+  )
+}
 
 export default App;

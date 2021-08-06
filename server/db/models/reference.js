@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     favorites: {
      type: DataTypes.BOOLEAN
     },
+    creator: {
+      type: DataTypes.BOOLEAN
+     },
   }, {
     uniqueKeys: {
       actions_unique: {
