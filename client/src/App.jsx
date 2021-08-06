@@ -1,16 +1,22 @@
 import React from 'react'
 import MainGreeting from './components/MainGreeting.js/MainGreeting';
- import Map from "./components/Map/Map"
+// import MapCont from './components/MapContainer/MapCont';
+ import MapContainer from "./components/MapContainer/MapContainer"
   
   
 
 
   function App() {
   return (
-    <div className="App">
-      <MainGreeting/>
-      <Map/>
+<div>
+<div>
+    <MainGreeting/>
     </div>
+    <div className="App">
+    <MapContainer/>
+    </div>
+  </div>
+
   );
   }
 
