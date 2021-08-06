@@ -7,11 +7,13 @@ import SignUp from "./components/Signup/Signup";
 import MainGreeting from './components/MainGreeting.js/MainGreeting';
 // import MapCont from './components/MapContainer/MapCont';
  import MapContainer from "./components/MapContainer/MapContainer"
+import MenuAppBar from './components/Header/Header';
 
 
 function App() {
   return (
       <React.Fragment>
+        <MenuAppBar/>
       <Switch>
         <Route path="/signup">
           <SignUp></SignUp>
