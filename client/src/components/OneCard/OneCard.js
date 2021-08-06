@@ -20,7 +20,7 @@ function Worm() {
         <h2>Маршрут № {id}: {one.title}</h2>
         <img className="cardImg" src={one.url} alt={one.title} />
         <p>{one.description}</p>
-        <Link className="nav-link" to="/">Скрыть</Link>
+        <Link className="nav-link" to="/cardlist">Скрыть</Link>
       </div>
       }
       </div>
