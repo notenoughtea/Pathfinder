@@ -43,6 +43,7 @@ export default function Cardlist() {
   const classes = useStyles();
   const cards = useSelector(state => state.cards.cards);
   return (
+    <div className="carouselContainer">
     <Carousel responsive={responsive}>
       {cards.map((item) => (
         <div className="cardOne">
@@ -76,5 +77,6 @@ export default function Cardlist() {
         </div>
       ))}
     </Carousel>
+    </div>
   );
 }
