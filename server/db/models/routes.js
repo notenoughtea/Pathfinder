@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Routes.init({
+    url: {
+      type: DataTypes.STRING,
+    },// +Roma аналогичное поле в миграции и в сидере!
     title: {
       type: DataTypes.STRING,
       allowNull: false,
