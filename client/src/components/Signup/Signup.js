@@ -13,8 +13,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { signUp } from '../../reduxToolkit/toolkitSlice';
 
 function Copyright() {
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const dispatch = useDispatch()
 
   return (
     <Container component="main" maxWidth="xs">
@@ -60,7 +64,17 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={e => {
+          e.preventDefault()
+          let form = new FormData(e.target)
+          let formData = {
+            firstName: form.get('firstName'),
+            lastName: form.get('lastName'),
+            email: form.get('email'),
+            password: form.get('password'),
+          } 
+          dispatch(signUp(formData))}
+        } >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField

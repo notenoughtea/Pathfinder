@@ -14,6 +14,7 @@ function App() {
   return (
       <React.Fragment>
         <MenuAppBar/>
+        
       <Switch>
         <Route path="/signup">
           <SignUp></SignUp>
@@ -21,7 +22,7 @@ function App() {
         <Route path="/signin">
           <SignIn></SignIn>
         </Route>
-        <Route path="/map">
+        <Route path="/">
         <MainGreeting/>
            <div className="App"/>
         <MapContainer/>
