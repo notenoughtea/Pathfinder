@@ -11,16 +11,16 @@ router.post('/', async function(req, res, next) {
     try {
       const findUser = await User.findOne({where: {email}})
       if(findUser) {
+        console.log('err');
         return res.send({error: 'Пользователь с таким email уже зарегестрирован'})
       } else {
         const hash = await bcrypt.hash(password, 8)
-        await User.create({firstName, lastName, email, password: hash})
+        const user = await User.create({firstName, lastName, email, password: hash})
+       return res.json({id: user.id, firstName, lastName, email})
       }
     } catch (error) {
       console.log(error);
-    }
-    
-    
+    }   
   }
 });
 

@@ -1,4 +1,4 @@
-const createError = require('http-errors');
+ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -21,16 +21,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 
-app.use(
-  session({
-    name: "sId",
-    store: new RedisStore({ client: redisClient }),
-    saveUninitialized: false,
-    secret: "Chubaka",
-    resave: false,
-  })
-);
-
 app.use(cors({
   origin: true,
   credentials: true
@@ -40,6 +30,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+  session({
+    name: "sId",
+    store: new RedisStore({ client: redisClient }),
+    saveUninitialized: false,
+    secret: "Chubaka",
+    resave: false,
+    cookie: {
+      secure: false,
+      httpOnly: true,
+      maxAge: 1e3 * 86400,
+    }
+  }),
+  
+);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
