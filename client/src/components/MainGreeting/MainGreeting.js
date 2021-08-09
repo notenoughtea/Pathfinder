@@ -33,7 +33,7 @@ export default function SimpleTooltips() {
   return (
     <div>
       {bg && <div style={{
-        height: '250px',
+        height: '270px',
         backgroundImage: `url(${server}${bg.url})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',

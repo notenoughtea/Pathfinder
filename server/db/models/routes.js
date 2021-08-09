@@ -40,12 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    lng: {
-      type: DataTypes.DOUBLE,
-      allowNull: false,
-    },
     lat: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.NUMERIC,
       allowNull: false,
     },
     lng: {

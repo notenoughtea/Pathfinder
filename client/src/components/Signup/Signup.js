@@ -14,7 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { signUp } from '../../reduxToolkit/toolkitSlice';
+import { axiosAuth } from '../../store/authSlice';
+
 
 function Copyright() {
 
@@ -73,7 +74,7 @@ export default function SignUp() {
             email: form.get('email'),
             password: form.get('password'),
           } 
-          dispatch(signUp(formData))}
+          dispatch(axiosAuth(formData))}
         } >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
