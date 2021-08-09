@@ -16,15 +16,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Routes.init({
+    url: {
+      type: DataTypes.STRING,
+    },// +Roma аналогичное поле в миграции и в сидере!
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    difficalty: {
-      type: DataTypes.STRING,
+    difficulty: {
+      type: DataTypes.INTEGER,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     address: {
       type: DataTypes.STRING,
@@ -37,14 +40,23 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+<<<<<<< HEAD
     lng: {
       type: DataTypes.DOUBLE,
       allowNull: false,
     },
     lat: {
       type: DataTypes.DOUBLE,
+=======
+    lat: {
+      type: DataTypes.NUMERIC,
+>>>>>>> 956b8873685e97482d0d9c5ec04e586800be0e46
       allowNull: false,
-    }
+    },
+    lng: {
+      type: DataTypes.NUMERIC,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Routes',

@@ -8,17 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      url: {
+        type: Sequelize.STRING,
+      },// + Roma
       title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      difficalty: {
-        type: Sequelize.STRING,
+      difficulty: {
+        type: Sequelize.INTEGER,
       },
       rating: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
-      addres: {
+      address: {
         type: Sequelize.STRING,
       },
       length: {
@@ -27,12 +30,21 @@ module.exports = {
       description: {
         type: Sequelize.TEXT,
       },
+<<<<<<< HEAD
       lng: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
       lat: {
         type: Sequelize.DOUBLE,
+=======
+      lat: {
+        type: Sequelize.NUMERIC,
+        allowNull: false,
+      },
+      lng: {
+        type: Sequelize.NUMERIC,
+>>>>>>> 956b8873685e97482d0d9c5ec04e586800be0e46
         allowNull: false,
       },
       createdAt: {
