@@ -9,7 +9,7 @@ const containerStyle = {
   height: "500px",
 };
 
-const defaultZoom = 16;
+const defaultZoom = 3;
 const defaultCenter = {
   lat: 43.44514365102102,
   lng: 41.73673191647548,
