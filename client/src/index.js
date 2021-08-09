@@ -5,7 +5,7 @@ import App from './App';
 import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './reduxToolkit';
+import  store  from './store';
 
 
 // axios.defaults.baseURL = "http://127.0.0.1:3000";

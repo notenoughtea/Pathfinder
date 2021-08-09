@@ -25,7 +25,7 @@ function App() {
   return (
     <div>
       <Router>
-        <NavBar />
+        <MenuAppBar />
         <Switch>
           <Route exact path="/">
             <MapContainer />
