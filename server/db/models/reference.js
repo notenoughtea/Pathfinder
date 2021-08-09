@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Reviews, {foreignKey: 'routes_id'})
     }
   };
-  Refference.init({
+  Reference.init({
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

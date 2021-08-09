@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      url: {
+        type: Sequelize.STRING,
+      },// + Roma
       title: {
         type: Sequelize.STRING,
         allowNull: false,

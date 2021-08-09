@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { server } from '../../constants';
 
 const responsive = {
   superLargeDesktop: {
@@ -42,27 +43,40 @@ const useStyles = makeStyles({
 export default function Cardlist() {
   const classes = useStyles();
   const cards = useSelector(state => state.cards.cards);
+
   return (
     <div className="carouselContainer">
     <Carousel responsive={responsive}>
       {cards.map((item) => (
-        <div className="cardOne">
+        <div className="cardOne" key={item.id}>
         <Card className={classes.root}>
           <CardActionArea>
             <CardMedia
               component="img"
               alt={item.title}
               height="140"
-              image={item.url}
+              image={`${server}${item.url}`}
               title={item.title}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
               {item.title}
-          </Typography>
+              </Typography>
+              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+              Сложность маршрута: {item.difficulty} ⚡
+              </Typography>
+              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+              Рейтинг маршрута: {item.rating} ⭐
+              </Typography>
+              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+              Продолжительность - км: {item.length} 🐾
+              </Typography>
+              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+              Адрес: {item.address}
+              </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-              {item.description}
-          </Typography>
+              Краткое описание: {item.description}
+              </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
