@@ -33,6 +33,9 @@ module.exports = {
       favorites: {
        type: Sequelize.BOOLEAN
       },
+      creator: {
+        type: Sequelize.BOOLEAN
+       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

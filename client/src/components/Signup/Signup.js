@@ -5,15 +5,20 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { axiosAuth } from '../../store/authSlice';
+
 
 function Copyright() {
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -48,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const dispatch = useDispatch()
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,7 +65,17 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={e => {
+          e.preventDefault()
+          let form = new FormData(e.target)
+          let formData = {
+            firstName: form.get('firstName'),
+            lastName: form.get('lastName'),
+            email: form.get('email'),
+            password: form.get('password'),
+          } 
+          dispatch(axiosAuth(formData))}
+        } >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -125,7 +141,7 @@ export default function SignUp() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
