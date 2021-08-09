@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar() {
   const classes = useStyles();
-  const preventDefault = (event) => event.preventDefault();
   return (
     <Typography className={classes.root}>
       <Link to="/"  color="inherit">
