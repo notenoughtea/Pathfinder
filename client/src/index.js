@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
-
 import { Provider } from 'react-redux';
 import store from './store';
+
+// import { Provider } from 'react-redux';
 // import { createStore, applyMiddleware } from 'redux';
 // import thunk from 'redux-thunk';
 // import { composeWithDevTools } from 'redux-devtools-extension';
@@ -20,8 +21,8 @@ axios.defaults.baseURL = 'http://127.0.0.1:3000';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Router>
-      <App />
+      <Router>
+        <App />
       </Router>
     </Provider>
   </React.StrictMode>,

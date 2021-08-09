@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    difficalty: {
-      type: DataTypes.STRING,
+    difficulty: {
+      type: DataTypes.INTEGER,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     address: {
       type: DataTypes.STRING,
@@ -37,10 +37,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    coordinates: {
-      type: DataTypes.STRING,
+    lat: {
+      type: DataTypes.NUMERIC,
       allowNull: false,
-    }
+    },
+    lng: {
+      type: DataTypes.NUMERIC,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Routes',

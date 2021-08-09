@@ -1,17 +1,22 @@
-import React from 'react';
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignIn from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
-import MainGreeting from './components/MainGreeting.js/MainGreeting';
 // import MapCont from './components/MapContainer/MapCont';
-import MapContainer from "./components/MapContainer/MapContainer"
 
 import { axiosCards } from './store/cardSlice';//+Roma
 import Cardlist from './components/Cardlist/Cardlist';//+Roma
 import OneCard from './components/OneCard/OneCard';//+Roma
+ import MapContainer from "./components/MapContainer/MapContainer"
+import NavBar from "./components/Navbar/NavBar";
+import axios from "axios";
+import setMarkersList from "./components/MapContainer/MapContainer"
 
+// useEffect(()=>{
+//   axios.get('/routes')
+//   .then(response => setMarkersList(response.data))
+// },[])
 
 function App() {
 
@@ -23,11 +28,16 @@ function App() {
 
   return (
     <div>
+    <Router>
+      <NavBar/>
       <Switch>
-        <Route path="/signup">
+        <Route exact path="/">
+            <MapContainer/>
+        </Route>
+        <Route exact path="/signup">
           <SignUp></SignUp>
         </Route>
-        <Route path="/signin">
+        <Route exact path="/signin">
           <SignIn></SignIn>
         </Route>
         <Route path="/map">
@@ -43,9 +53,13 @@ function App() {
           {error && <h2>An error occured: {error}</h2>}
           <Cardlist />
         </Route>
+        <Route exact path="/lk">
+        </Route>
       </Switch>
+      </Router>
     </div>
  );
 }
+
 
 export default App;

@@ -12,13 +12,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      difficalty: {
-        type: Sequelize.STRING,
+      difficulty: {
+        type: Sequelize.INTEGER,
       },
       rating: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
-      addres: {
+      address: {
         type: Sequelize.STRING,
       },
       length: {
@@ -26,6 +26,14 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT,
+      },
+      lat: {
+        type: Sequelize.NUMERIC,
+        allowNull: false,
+      },
+      lng: {
+        type: Sequelize.NUMERIC,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
