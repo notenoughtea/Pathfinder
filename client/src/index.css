@@ -29,10 +29,7 @@ code {
 }
 .carouselContainer {
   max-width: 75%;
-  margin-top: 40%;
+  margin-top: 5%;
   margin-left: 10%
 }
-a {
-  color: rgb(247, 247, 247);
-  text-decoration: none;
-}
+

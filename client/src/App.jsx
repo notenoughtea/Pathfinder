@@ -10,7 +10,7 @@ import SignUp from "./components/Signup/Signup";
 // import MapCont from './components/MapContainer/MapCont';
  import MapContainer from "./components/MapContainer/MapContainer"
 import MenuAppBar from './components/Header/Header';
-import NavBar from "./components/Navbar/NavBar";
+// import NavBar from "./components/Navbar/NavBar";
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 
 
@@ -28,16 +28,14 @@ function App() {
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
+            <MainGreeting />
             {status === 'loading' && <h2>Loading...</h2>}
             {error && <h2>An error occured: {error}</h2>}
             <Cardlist />
-            <MainGreeting />
+            <MapContainer />
           </Route>
           <Route exact path="/signup">
             <SignUp />
-          </Route>
-          <Route exact path="/map">
-          <MapContainer />
           </Route>
           <Route exact path="/signin">
             <SignIn />

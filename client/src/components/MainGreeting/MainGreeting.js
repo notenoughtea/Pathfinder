@@ -1,45 +1,56 @@
 import React from 'react';
+import { useEffect, useState } from "react";
+import { server } from '../../constants';
+import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Tooltip from '@material-ui/core/Tooltip';
+import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    ...theme.typography.button,
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(1),
-      position: 'absolute', 
-      left: '50%', 
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      alignItems: "center",
-      justify: "center"
+  fab: {
+    margin: theme.spacing(2),
   },
-  button: {
-    fontSize: 20,
-    left: '50%', 
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-  },
-  text: {
-    alignItems: "center",
-    fontSize: 30
+  absolute: {
+    position: 'absolute',
+    bottom: theme.spacing(2),
+    right: theme.spacing(3),
   },
 }));
 
-export default function MainGreeting() {
+export default function SimpleTooltips() {
   const classes = useStyles();
+
+  const [bg, setBg] = useState(null);
+  useEffect(() => {
+    axios.post('/background')
+      .then(res => setBg(res.data));
+  }, [])
+
   return (
-    <Container maxWidth="sm">
-    <Typography component="div"/>
-    <div className={classes.root}>
-        <div className={classes.text}>{"Find your path"}</div>
-        <br/>
-        <Button  className={classes.button} variant="outlined" color="primary">First step</Button>
+    <div>
+      {bg && <div style={{
+        height: '250px',
+        backgroundImage: `url(${server}${bg.url})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <Grid container justifyContent="center">
+          <Typography variant="h2" gutterBottom>
+            Find your path
+      </Typography>
+          <Tooltip title="Add" aria-label="add">
+            <Fab color="primary" className={classes.fab}>
+              <AddIcon><Link to='/' /></AddIcon>
+            </Fab>
+          </Tooltip>
+        </Grid>
+      </div>
+      }
     </div>
-    </Container>
   );
 }
