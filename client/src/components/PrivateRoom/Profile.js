@@ -41,7 +41,7 @@ export default function Profile() {
     </CardActionArea>
     <CardActions>
       <Button size="small" color="primary">
-        Редактировать
+          Редактировать
       </Button>
     </CardActions>
   </Card>
