@@ -45,6 +45,7 @@ function App() {
             <OneCard />
           </Route>
           <Route exact path="/lk">
+            
           </Route>
         </Switch>
       </Router>

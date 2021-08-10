@@ -95,7 +95,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Профиль</MenuItem>
+                <MenuItem onClick={handleClose}><Link to="/lk"  color="inherit">Профиль</Link></MenuItem>
                 <MenuItem onClick={handleCloseLogout}>Выход</MenuItem>              
               </Menu>
             </div>
