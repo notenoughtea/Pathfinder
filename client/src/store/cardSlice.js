@@ -7,7 +7,6 @@ export const axiosCards = createAsyncThunk(
   async function(_, {rejectWithValue}) {
     try {
       const response = await axios('http://127.0.0.1:3001/routes');
-      console.log(response);
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }

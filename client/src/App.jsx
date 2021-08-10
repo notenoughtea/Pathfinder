@@ -10,8 +10,9 @@ import SignUp from "./components/Signup/Signup";
 // import MapCont from './components/MapContainer/MapCont';
  import MapContainer from "./components/MapContainer/MapContainer"
 import MenuAppBar from './components/Header/Header';
-import NavBar from "./components/Navbar/NavBar";
+// import NavBar from "./components/Navbar/NavBar";
 import MainGreeting from "./components/MainGreeting/MainGreeting";
+
 
 
 function App() {
@@ -20,19 +21,19 @@ function App() {
   const dispatch = useDispatch();//+Roma: вместо axios.get('/routes') !
   useEffect(() => {
     dispatch(axiosCards());
-  }, [dispatch]);
+  }, []);
 
   return (
-    <div>
+    <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
-            <MapContainer />
             <MainGreeting />
             {status === 'loading' && <h2>Loading...</h2>}
             {error && <h2>An error occured: {error}</h2>}
             <Cardlist />
+            <MapContainer />
           </Route>
           <Route exact path="/signup">
             <SignUp />

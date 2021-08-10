@@ -12,5 +12,8 @@ router.post('/one', async (req,res) => {
   const result = await Routes.findOne({where:{id: id}})
   res.status(200).json(result)
 })
+router.post('/background', (req,res) => {
+  res.status(200).send({url: '/img/IMG_0507.png'})
+})
 
 module.exports = router;

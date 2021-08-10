@@ -12,7 +12,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Link } from 'react-router-dom';
-import RecipeReviewCard from './Card';
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from '../../store/signinSlice'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(false);
+  const auth = useSelector(state => state.signin.auth)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch()
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -44,6 +46,11 @@ export default function MenuAppBar() {
     setAnchorEl(event.currentTarget);
   };
 
+
+  const handleCloseLogout = () => {
+    dispatch(logout())
+    setAnchorEl(null);
+  };
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -89,7 +96,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Профиль</MenuItem>
-                <MenuItem onClick={handleClose}>Выход</MenuItem>              
+                <MenuItem onClick={handleCloseLogout}>Выход</MenuItem>              
               </Menu>
             </div>
           ) : 

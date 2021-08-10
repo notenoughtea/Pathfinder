@@ -37,7 +37,7 @@ function MapContainer() {
 
   const markerHandler = () => (setMarkerPosition)
 
-  console.log(markersList);
+  // console.log(markersList);
   return isLoaded ? (
     <GoogleMap className={"mapcontainer"}
       mapContainerStyle={containerStyle}
