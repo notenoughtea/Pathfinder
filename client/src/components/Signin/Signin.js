@@ -66,10 +66,15 @@ export default function SignIn() {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.signin.auth)
   const message = useSelector(state => state.signin.message)
+  const user = useSelector(state => state.signin.user)
 
   
   useEffect(()=> {
-    if(auth) history.push('/')
+    if(auth) {
+      localStorage.setItem('auth', auth)
+      localStorage.setItem('user', user)
+      window.location.replace('http://localhost:3000/')
+    } 
   },[auth])
 
   return (
