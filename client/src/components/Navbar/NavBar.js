@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
   return (
+
     <Typography className={classes.root}>
       <Link to="/"  color="inherit">
         Home
@@ -28,5 +29,6 @@ export default function NavBar() {
         Profile
       </Link>
     </Typography>
+    
   );
 }
