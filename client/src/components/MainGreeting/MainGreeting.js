@@ -27,7 +27,10 @@ export default function SimpleTooltips() {
   const [bg, setBg] = useState(null);
   useEffect(() => {
     axios.post('/background')
-      .then(res => setBg(res.data));
+      .then(res => {
+        setBg(res.data);
+      console.log(res.data); })
+      
   }, [])
 
   return (

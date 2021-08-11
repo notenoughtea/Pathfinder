@@ -6,6 +6,8 @@ import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import  store  from './store';
+import 'react-image-gallery/styles/css/image-gallery.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

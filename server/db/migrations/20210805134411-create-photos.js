@@ -30,10 +30,14 @@ module.exports = {
           key: 'id'
         }
       },
-      photo: {
+      original: {
        type: Sequelize.TEXT,
        allowNull: false,
       },
+      thumbnail: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

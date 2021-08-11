@@ -15,7 +15,7 @@ export default function Title({ card }) {
 
   return (
     <div >
-      <Card className="text-white">
+      <Card style={{border: 'none'}} className="text-white">
         <div className={style.shadow}></div>
         <Card.Img
           className={style.img}

@@ -6,7 +6,7 @@ export const axiosCards = createAsyncThunk(
   'cards/axiosCards',
   async function(_, {rejectWithValue}) {
     try {
-      const response = await axios('http://127.0.0.1:3001/routes');
+      const response = await axios('http://127.0.0.1:3001/upload/image');
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }
