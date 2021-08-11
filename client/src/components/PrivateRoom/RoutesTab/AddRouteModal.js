@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginTop: "100px"
   },
+  // form: {
+  //   position: "absolute",
+  //   width: "300px"
+  // }
 }));
 
 export default function AddRouteModal() {
@@ -52,7 +56,7 @@ export default function AddRouteModal() {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>Add Route</Button>
+      <Button color="primary" variant="contained" onClick={handleOpen}>Добавить маршрут</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -67,7 +71,7 @@ export default function AddRouteModal() {
       >
         <Fade in={open}>
         <div className={classes.paper}>
-        <AddRouteForm handleClose={handleClose} lat={lat} lng={lng}/>
+        <AddRouteForm className={classes.form} handleClose={handleClose} lat={lat} lng={lng}/>
         <MiniMap setLat={setLat} setLng={setLng}/>
           </div>
         </Fade>

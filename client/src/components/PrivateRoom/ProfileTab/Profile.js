@@ -5,11 +5,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { useSelector } from 'react-redux';
 import seal from './seal.png'
 import "./profile.module.css"
+import UpdateProfileModal from './UpdateProfileModal';
 
   const useStyles = makeStyles({
     root: {
@@ -25,9 +23,12 @@ import "./profile.module.css"
   });
 
 export default function Profile() {
-  const auth = useSelector(state => state.auth);
   const classes = useStyles();
-  console.log("user", auth);
+  const {
+    email,
+    firstName,
+    lastName,
+  } = localStorage;
 
   return (
     <Card className={classes.root}>
@@ -39,23 +40,15 @@ export default function Profile() {
       />
       <CardContent>
         <h3 >
-          Стэн
-          {/* {firstname} */}
+          {firstName}
         </h3>
         <br/>
         <h5 >
-          Бульбазарович
-          {/* {lastname} */}
+          {lastName}
           </h5>
           <br/>
         <h5 >
-          shantaram@mail.ru
-          {/* {email} */}
-          </h5>
-          <br/>
-        <h5 >
-          13.13.1313
-          {/* {date} */}
+          {email}
           </h5>
           <br/>
       </CardContent>
@@ -66,9 +59,7 @@ export default function Profile() {
       />
     </CardActionArea>
     <CardActions>
-      <Button size="small" color="primary">
-          Редактировать
-      </Button>
+    <UpdateProfileModal/>
     </CardActions>
   </Card>
   );
