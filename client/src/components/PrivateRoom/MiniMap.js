@@ -1,27 +1,30 @@
 import React, { useState, memo } from "react";
 import { GoogleMap, useJsApiLoader, Marker, InfoBox } from "@react-google-maps/api";
-import "./style.module.css"
 
 const containerStyle = {
-  width: "100vw",
-  height: "100vh",
+  width: "1000px",
+  height: "700px",
 };
 
-const defaultZoom = 16;
+const defaultZoom = 10;
 const defaultCenter = {
-  lng: 37.6153107,
-  lat: 55.7520233,
+  lat: 43.3466252,
+  lng: 42.4398009,
 };
 
 const defaultMarkerPosition={
-  lng: 37.6153107,
-  lat: 55.7520233,
+  lat: 43.3466252,
+  lng: 42.4398009,
 }
 
 const infoBoxOptions = { closeBoxURL: '', enableEventPropagation: true };
-const options = { streetViewControl: false };
 
-function MapContainer() {
+function MiniMap(props) {
+
+  const {
+    setLat,
+    setLng
+  } = props
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyApzvj3AYiAkv1Vr9x48zJ1NpK4DuqE-1M",
@@ -31,8 +34,6 @@ function MapContainer() {
   const [zoom, setZoom] = useState(defaultZoom);
   const [markerPosition, setMarkerPosition] = useState(defaultMarkerPosition);
   const [markerVisibility, setMarkerVisibility] = useState(0);
-
-
   const markerHandler = () => (setMarkerPosition)
 
   return isLoaded ? (
@@ -40,39 +41,36 @@ function MapContainer() {
       mapContainerStyle={containerStyle}
       center={center}
       zoom={zoom}
-      mapTypeId={"satellite"}
+      mapTypeId={"hybrid"}
       onClick={((e) => {
         return (
         setMarkerVisibility(1),
         setMarkerPosition({
         lng: e.latLng.lng(),
         lat: e.latLng.lat(),
-        })
+        }),
+        setLat(e.latLng.lat()),
+        setLng(e.latLng.lng())
         )
       })}
-      // options={options}
-      
     >
-    <button className="bn31"><span className="bn31span">Add route</span></button>
-
     <Marker
-    onDrag={((e) => setMarkerPosition({
+    onDrag={((e) => 
+      {
+    setMarkerPosition({
       lng: e.latLng.lng(),
       lat: e.latLng.lat(),
-    }))}
+    });
+    setLat(e.latLng.lat())
+    setLng(e.latLng.lng())
+      }
+  )}
     opacity={0.9}
     clickable={true}
     draggable={true}
     position={markerPosition}
     title={"Эскалибур"}
     >
-    {/* <InfoBox
-      position={markerPosition}
-      options={infoBoxOptions}
-
-    >
-    <NotListedLocationIcon/>
-    </InfoBox> */}
     </Marker>
     </GoogleMap>
   ) : (
@@ -80,4 +78,4 @@ function MapContainer() {
   );
 }
 
-export default memo(MapContainer);
+export default memo(MiniMap);
