@@ -3,15 +3,11 @@ import { useEffect, useState } from "react";
 import { server } from '../../constants';
 import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
-<<<<<<< HEAD
-import Button from '@material-ui/core/Button';
-=======
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
->>>>>>> 76ab0bc90afd9fbef7bf8453e501a658e09c0ac4
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
