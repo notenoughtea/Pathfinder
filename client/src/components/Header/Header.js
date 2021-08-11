@@ -38,9 +38,9 @@ export default function MenuAppBar() {
   const open = Boolean(anchorEl);
   const dispatch = useDispatch()
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);

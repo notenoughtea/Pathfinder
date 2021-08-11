@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
+import seal from './seal.png'
+import "./profile.module.css"
 
   const useStyles = makeStyles({
     root: {
@@ -16,11 +18,16 @@ import { useSelector } from 'react-redux';
     media: {
       height: 350,
     },
+    seal:{
+      height: 112,
+      width: 126,
+    },
   });
 
 export default function Profile() {
-  const cards = useSelector(state => state.cards.cards);
+  const auth = useSelector(state => state.auth);
   const classes = useStyles();
+  console.log("user", auth);
 
   return (
     <Card className={classes.root}>
@@ -31,13 +38,32 @@ export default function Profile() {
         title="header"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          ФИО
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Описание профиля
-        </Typography>
+        <h3 >
+          Стэн
+          {/* {firstname} */}
+        </h3>
+        <br/>
+        <h5 >
+          Бульбазарович
+          {/* {lastname} */}
+          </h5>
+          <br/>
+        <h5 >
+          shantaram@mail.ru
+          {/* {email} */}
+          </h5>
+          <br/>
+        <h5 >
+          13.13.1313
+          {/* {date} */}
+          </h5>
+          <br/>
       </CardContent>
+      <CardMedia
+        className={classes.seal}
+        image={seal}
+        title="header"
+      />
     </CardActionArea>
     <CardActions>
       <Button size="small" color="primary">
