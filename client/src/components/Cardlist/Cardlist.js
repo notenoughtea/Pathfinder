@@ -85,24 +85,19 @@ export default function Cardlist() {
                     {item.title}
                   </Typography>
                   <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                    Сложность маршрута: {item.difficulty} ⚡
+                    Сложность: {item.difficulty} ⚡
               </Typography>
                   <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                    Рейтинг маршрута: {item.rating} ⭐
+                    Рейтинг: {item.rating} ⭐
               </Typography>
                   <Typography gutterBottom variant="body2" color="textSecondary" component="p">
                     Продолжительность - км: {item.length} 🐾
               </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    Краткое описание: {item.description}
+                    Oписание: {item.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              {/* <CardActions>
-                <Button size="small" color="primary">
-                  <Link to={`/card/${item.id}`}></Link>
-                </Button>
-              </CardActions> */}
               </Link>
             </Card>
           </div>
