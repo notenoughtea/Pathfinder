@@ -68,15 +68,20 @@ export default function SignIn() {
   const message = useSelector(state => state.signin.message)
   const user = useSelector(state => state.signin.user)
 
-  
+
+
   useEffect(()=> {
     if(auth) {
+      localStorage.setItem('id', user.id)
+      localStorage.setItem('firstName', user.firstName)
+      localStorage.setItem('lastName', user.lastName)
+      localStorage.setItem('email', user.email)
       localStorage.setItem('auth', auth)
-      localStorage.setItem('user', user)
       window.location.replace('http://localhost:3000/')
     } 
   },[auth])
 
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
