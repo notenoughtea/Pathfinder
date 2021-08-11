@@ -19,12 +19,12 @@ function App() {
   const dispatch = useDispatch();//+Roma: вместо axios.get('/routes') !
   useEffect(() => {
     dispatch(axiosCards());
-  }, [dispatch]);
+  }, []);
 
   return (
-    <div>
+    <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
-        <NavBar/>
+        {/* <NavBar/> */}
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
