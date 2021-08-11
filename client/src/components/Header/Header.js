@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../../store/signinSlice'
 
@@ -33,23 +33,32 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
   const classes = useStyles();
-  const auth = useSelector(state => state.signin.auth)
+  const [auth, setAuth] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch()
+  const history = useHistory()
 
   // const handleChange = (event) => {
   //   setAuth(event.target.checked);
   // };
 
   const handleMenu = (event) => {
+    console.log(localStorage);
     setAnchorEl(event.currentTarget);
   };
 
+  useEffect(()=>{
+    console.log(localStorage.auth);
+    if(localStorage.auth) setAuth(true)
+    else setAuth(false)
+  },[localStorage.auth])
 
   const handleCloseLogout = () => {
     dispatch(logout())
+    localStorage.clear()
     setAnchorEl(null);
+    window.location.replace('http://localhost:3000/')
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -69,7 +78,7 @@ export default function MenuAppBar() {
             Главная 
             </Link>
           </Typography>
-          {auth ? (
+          {localStorage.auth ? (
             <div>
               <IconButton
                 aria-label="account of current user"
