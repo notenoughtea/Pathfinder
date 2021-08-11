@@ -11,9 +11,7 @@ import { Rating } from "@material-ui/lab";
 
 
 
-export default function Description(data) {
-
-  console.log(data);
+export default function Description({data}) {
 
   const { url, title, difficulty, rating, address, length, lng, lat, description } = data;
 
@@ -31,14 +29,14 @@ export default function Description(data) {
   }
 
   return (
-    <Card body>{description}
+    <Card style={{border: 'none'}} body>{description}
       <hr></hr>
       <div className={style.length}>
       <Card.Subtitle className="mb-2 text-muted">Длинна</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Рейтинг</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Сложность</Card.Subtitle>
       </div>
-      <div className={style.length}>
+      <div className={style.blabla}>
         <span>{length}km</span>
       <Rating
             name="half-rating-read"

@@ -1,4 +1,26 @@
 import ReactWeather, { useOpenWeather } from 'react-open-weather'
+import style from "./style.module.css"
+
+const  customStyles  =  { 
+	FontFamily :   'Helvetica' , 
+	gradientStart :   '#0181C2' , 
+	gradientMid :   '#04A7F9' , 
+	gradientEnd :   '#4BC4F7' , 
+	locationFontColor :   '#FFF' , 
+	todayTempFontColor :   '#FFF' , 
+  borderRadius: '0px',
+	// todayDateFontColor :   '# B5DEF4' , 
+	// todayRangeFontColor :   '# B5DEF4' , 
+	// todayDescFontColor :   '# B5DEF4' , 
+	// todayInfoFontColor :  '# B5DEF4' , 
+	// todayIconColor :   '#FFF' , 
+	// forecastBackgroundColor :   '#FFF' , 
+	forecastSeparatorColor :   '#DDD' , 
+	// forecastDateColor :   '# 777' , 
+	// forecastDescColor :   '# 777' , 
+	// forecastRangeColor :   '# 777' , 
+	// forecastIconColor :   ' # 4BC4F7 ' , 
+} ;
 
 export default function Weather({lat, lng, title}) {
 
@@ -10,10 +32,12 @@ export default function Weather({lat, lng, title}) {
     unit: 'metric', // values are (metric, standard, imperial)
   });
 
-  console.log(data);
   return (
     <> 
     <ReactWeather
+    // theme ={ customStyles }
+      // theme={{borderRadius: '0px'}}
+      theme={customStyles}
       isLoading={isLoading}
       errorMessage={errorMessage}
       data={data}

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Photos.init({
-    ser_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -23,10 +23,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    photos: {
+    original: {
      type: DataTypes.TEXT,
      allowNull: false,
     },
+    thumbnail: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+     },
   }, {
     sequelize,
     modelName: 'Photos',

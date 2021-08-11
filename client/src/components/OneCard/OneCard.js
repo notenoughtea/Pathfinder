@@ -10,6 +10,7 @@ import { Card, Badge } from 'react-bootstrap'
 import { Rating } from "@material-ui/lab";
 import Weather from './Weather/Weather';
 import Description from './Description/Description';
+import TabPanel from './Tabs/Tabs';
 
 function OneCard() {
   const { id } = useParams();
@@ -30,8 +31,10 @@ function OneCard() {
       <Title card={one} img={`${server}${one.url}`}/>
       <div className={style.blog} >
         <Description data={one}/>
-      <Weather lng={lng} lat={lat} title={title} ></Weather>
-      </div>
+      <Weather  lng={lng} lat={lat} title={title} ></Weather>
+      <TabPanel />
+        </div>
+      
     </div>
   )
 }
