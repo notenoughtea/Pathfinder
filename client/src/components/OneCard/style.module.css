@@ -5,11 +5,7 @@
   max-width: 70%;
   background-color: white;
 }
-.length {
-  display: flex;
-  justify-content: space-between;
 
-}
 .blog {
   max-width: 700px;
 }

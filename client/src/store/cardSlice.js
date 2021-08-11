@@ -35,17 +35,41 @@ const cardSlice = createSlice({
     addCard (state, action) {
         state.cards.push(action.payload)
     },
-    // updateCard (state, action) {
-    //   state.map((e) => {
-    //     if (e.id === id) {
-    //       return {
-    //         ...e,
-    //         todo: res.data.todo,
-    //       };
-    //     }
-    //     return e;
-    //   })
-    // }
+    deleteCard (state, action) {
+      const {
+        id
+      } = action.payload
+      console.log("--->", action.payload);
+         const index = (state.cards).indexOf(state.cards.find((e)=>(e.id===id)));
+          state.cards.splice(index, 1)
+      },
+    updateCard (state, action) {
+      const {
+        title,
+        length,
+        difficulty,
+        address,
+        description,
+        lat,
+        lng,
+        id
+      } = action.payload
+      state.cards = state.cards.map((e) => {
+        if (e.id === id) {
+          return {
+            ...e,
+            title: title,
+            length: length,
+            difficulty: difficulty,
+            address: address,
+            description: description,
+            lat: lat,
+            lng: lng
+           };
+        }
+        return e;
+      })
+    }
 
   },
   extraReducers: {
@@ -62,4 +86,6 @@ const cardSlice = createSlice({
 });
 
 export const {addCard} = cardSlice.actions
+export const {updateCard} = cardSlice.actions
+export const {deleteCard} = cardSlice.actions
 export default cardSlice.reducer;

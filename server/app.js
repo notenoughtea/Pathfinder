@@ -7,12 +7,13 @@ const cors = require('cors')
 
 // const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
-// const usersRouter = require('./routes/users');
+const userRouter = require('./routes/userRouter');
 const routesRouter = require('./routes/routesRouter');
 
 const app = express();
 const redis = require("redis");
 const session = require("express-session");
+const { userInfo } = require('os');
 let RedisStore = require("connect-redis")(session);
 let redisClient = redis.createClient();
 
@@ -50,7 +51,7 @@ app.use(
 // app.use('/', indexRouter);
 app.use('/', routesRouter);
 app.use('/auth', authRouter);
-// app.use('/users', usersRouter);
+app.use('/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

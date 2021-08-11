@@ -31,7 +31,6 @@ export const signupAxios = createAsyncThunk(
       if (response.statusText !== 'OK') {
         throw new Error('Server error!')
       } else {
-        console.log(555);
         return response.data
       }
 
@@ -74,6 +73,7 @@ const signinSlice = createSlice({
       if(action.payload.error) {
         state.message = action.payload.error
       } else {
+        state.message = ''
         state.user = action.payload;
         state.auth = true
       }
