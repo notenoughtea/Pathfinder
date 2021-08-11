@@ -7,13 +7,15 @@ import {
 import "./style.module.css";
 import axios from "axios";
 import MarkerModal from "./MarkerModal";
+import { useSelector } from "react-redux";
+import { Modal } from "@material-ui/core";
 
 const containerStyle = {
   width: "500px",
   height: "500px",
 };
 
-const defaultZoom = 3;
+const defaultZoom = 10;
 const defaultCenter = {
   lat: 43.44514365102102,
   lng: 41.73673191647548,
@@ -33,30 +35,37 @@ function MapContainer() {
     googleMapsApiKey: "AIzaSyApzvj3AYiAkv1Vr9x48zJ1NpK4DuqE-1M",
   });
 
+  const [modal, setmodal] = useState('');
   const [center, setCenter] = useState(defaultCenter);
   const [zoom, setZoom] = useState(defaultZoom);
   const [markerPosition, setMarkerPosition] = useState(defaultMarkerPosition);
   const [markerVisibility, setMarkerVisibility] = useState(0);
   const [markersList, setMarkersList] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const cards = useSelector(state => state.cards.cards);
 
-  useEffect(() => {
-    axios.get("/routes").then(({ data }) => {
-      setMarkersList(data);
-    });
-  }, []);
-
+  // useEffect(() => {
+  //   setMarkersList(cards);
+  // }, [cards]);
+  // console.log(markersList);
   const allMarks = () => {
-    if (markersList.length) {
 
-      const handleOpen = () => {
+    if (cards.length) {
+
+      
+      const modal = (el) => {
+        <MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description}/>
+      }
+      const handleOpen = (el) => {
         setOpen(true);
+        setmodal(<MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description}/>)
       };
     
       const handleClose = () => {
         setOpen(false);
+        setmodal('')
       }
-      return markersList.map((el) => (
+      return cards.map((el) => (
         <Marker
           clickable={true}
           position={{
@@ -64,9 +73,9 @@ function MapContainer() {
             lng: el.lng / 1,
           }}
           title={el.title}
-          onClick={() => handleOpen()}
+          onClick={() => handleOpen(el)}
         >
-      <MarkerModal open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description}/>
+          {/* {modal(el)} */}
         </Marker>
       ));
     }
@@ -74,28 +83,19 @@ function MapContainer() {
   };
   
   return isLoaded ? (
+    <div>
+    {modal}
     <GoogleMap
       className={"mapcontainer"}
       mapContainerStyle={containerStyle}
       center={center}
       zoom={zoom}
-      mapTypeId={"satellite"}
-      onClick={(e) => {
-        return (
-          setMarkerVisibility(1),
-          setMarkerPosition({
-            lng: e.latLng.lng(),
-            lat: e.latLng.lat(),
-          })
-        );
-      }}
-      // options={options}
+      mapTypeId={"hybrid"}
     >
-      <button className="bn31">
-        <span className="bn31span">Add route</span>
-      </button>
+      
       {allMarks()}
     </GoogleMap>
+    </div>
   ) : (
     <p>No map</p>
   );

@@ -7,13 +7,11 @@ import Cardlist from './components/Cardlist/Cardlist';//+Roma
 import OneCard from './components/OneCard/OneCard';//+Roma
 import SignIn from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
-// import MapCont from './components/MapContainer/MapCont';
  import MapContainer from "./components/MapContainer/MapContainer"
 import MenuAppBar from './components/Header/Header';
-// import NavBar from "./components/Navbar/NavBar";
+import NavBar from "./components/Navbar/NavBar";
 import MainGreeting from "./components/MainGreeting/MainGreeting";
-
-
+import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
 
 function App() {
 
@@ -26,6 +24,7 @@ function App() {
   return (
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
+        <NavBar/>
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
@@ -45,7 +44,7 @@ function App() {
             <OneCard />
           </Route>
           <Route exact path="/lk">
-            
+          <PrivateRoom/>
           </Route>
         </Switch>
       </Router>

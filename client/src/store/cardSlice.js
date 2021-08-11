@@ -32,6 +32,21 @@ const cardSlice = createSlice({
   },
   reducers: {
 
+    addCard (state, action) {
+        state.cards.push(action.payload)
+    },
+    // updateCard (state, action) {
+    //   state.map((e) => {
+    //     if (e.id === id) {
+    //       return {
+    //         ...e,
+    //         todo: res.data.todo,
+    //       };
+    //     }
+    //     return e;
+    //   })
+    // }
+
   },
   extraReducers: {
     [axiosCards.pending]: (state) => {
@@ -46,4 +61,5 @@ const cardSlice = createSlice({
   },
 });
 
+export const {addCard} = cardSlice.actions
 export default cardSlice.reducer;

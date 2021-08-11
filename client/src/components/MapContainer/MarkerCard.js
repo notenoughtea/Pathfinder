@@ -37,6 +37,7 @@ export default function MarkerCard(props) {
     description
   } = props
 
+  console.log(`${title}`);
   const classes = useStyles();
   return (
 
