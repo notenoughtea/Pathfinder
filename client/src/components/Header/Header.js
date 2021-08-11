@@ -58,7 +58,7 @@ export default function MenuAppBar() {
 
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="header">
       <AppBar position="static">
         <Toolbar>
           <IconButton onClick={handleMenu} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">

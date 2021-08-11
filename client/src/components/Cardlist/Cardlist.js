@@ -8,12 +8,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { server } from '../../constants';
+import UpBtn from '../UpBtn/UpBtn';
 
 const responsive = {
   superLargeDesktop: {
@@ -44,53 +48,65 @@ export default function Cardlist() {
   const classes = useStyles();
   const cards = useSelector(state => state.cards.cards);
 
+  const [bg, setBg] = useState(null);
+  useEffect(() => {
+    axios.post('/background')
+      .then(res => setBg(res.data));
+  }, [])
+
+
   return (
-    <div className="carouselContainer">
-    <Carousel responsive={responsive}>
-      {cards.map((item) => (
-        <div className="cardOne" key={item.id}>
-        <Card className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              alt={item.title}
-              height="140"
-              image={`${server}${item.url}`}
-              title={item.title}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-              {item.title}
+    <div id="cardlist">
+      <div>
+        {bg && <div className="bg" style={{
+             height: '300px',
+             backgroundImage: `url(${server}${bg.url})`,
+              backgroundPosition: 'center',
+             backgroundSize: 'cover',
+             backgroundRepeat: 'no-repeat'
+           }}>
+        </div>}
+      </div>
+      <Carousel className="carouselContainer" responsive={responsive}>
+        {cards.map((item) => (
+          <div className="cardOne" key={item.id}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  alt={item.title}
+                  height="140"
+                  image={`${server}${item.url}`}
+                  title={item.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {item.title}
+                  </Typography>
+                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+                    Сложность маршрута: {item.difficulty} ⚡
               </Typography>
-              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-              Сложность маршрута: {item.difficulty} ⚡
+                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+                    Рейтинг маршрута: {item.rating} ⭐
               </Typography>
-              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-              Рейтинг маршрута: {item.rating} ⭐
+                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+                    Продолжительность - км: {item.length} 🐾
               </Typography>
-              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-              Продолжительность - км: {item.length} 🐾
-              </Typography>
-              <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-              Адрес: {item.address}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-              Краткое описание: {item.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Поделиться
-        </Button>
-            <Button size="small" color="primary">
-            <Link to={`/card/${item.id}`}>Подробнее</Link>
-        </Button>
-          </CardActions>
-        </Card>
-        </div>
-      ))}
-    </Carousel>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Краткое описание: {item.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  <Link to={`/card/${item.id}`}>Подробнее</Link>
+                </Button>
+              </CardActions>
+            </Card>
+          </div>
+        ))}
+      </Carousel>
+      <UpBtn></UpBtn>
     </div>
   );
 }

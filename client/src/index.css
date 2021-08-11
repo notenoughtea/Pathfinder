@@ -11,13 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* .cardOne {
-  transition: all 0.5s ease;
-} */
-/* .cardOne:hover {
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-	transform: scale(1.1);
-} */
 .center {
   display: flex;
   flex-flow:column;
@@ -29,7 +22,50 @@ code {
 }
 .carouselContainer {
   max-width: 75%;
-  margin-top: 5%;
+  margin-top: 3%;
   margin-left: 10%
+}
+
+
+.intro {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+}
+.intro__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+  background-size: cover;
+}
+.intro__media::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+.intro_media_video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.intro__content {
+  z-index: 10;
+  color: white;
+  text-align: center;
 }
 
