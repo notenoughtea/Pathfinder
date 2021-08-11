@@ -71,6 +71,7 @@ export default function Cardlist() {
         {cards.map((item) => (
           <div className="cardOne" key={item.id}>
             <Card className={classes.root}>
+            <Link to={`/card/${item.id}`}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -97,11 +98,12 @@ export default function Cardlist() {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
+              {/* <CardActions>
                 <Button size="small" color="primary">
-                  <Link to={`/card/${item.id}`}>Подробнее</Link>
+                  <Link to={`/card/${item.id}`}></Link>
                 </Button>
-              </CardActions>
+              </CardActions> */}
+              </Link>
             </Card>
           </div>
         ))}

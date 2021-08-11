@@ -29,8 +29,9 @@ const useStyles = makeStyles((theme) => ({//
 
 
 const containerStyle = {
-  width: "500px",
+  width: "850px",
   height: "500px",
+  borderRadius: '10px'
 };
 
 const defaultZoom = 10;
@@ -118,7 +119,7 @@ function MapContainer() {
     <div style={{
       marginTop: '2%',
       marginBottom: '1%',
-      marginLeft: '30%',
+      marginLeft: '20%',
     }}>
       <GoogleMap className={"mapcontainer"} 
         mapContainerStyle={containerStyle}
@@ -131,7 +132,7 @@ function MapContainer() {
       <Grid style={{
         position: 'absolute',
         top: '185%',
-        left: '75%'
+        left: '80%'
       }}>
         <Tooltip title="down" aria-label="add">
           <Fab color="primary" className={classes.fab}>
@@ -142,7 +143,7 @@ function MapContainer() {
       <Grid style={{
         position: 'absolute',
         top: '155%',
-        left: '75%'
+        left: '80%'
       }}>
         <Tooltip title="up" aria-label="add">
           <Fab color="primary" className={classes.fab}>
