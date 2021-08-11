@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { server } from '../../constants';
 import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
+// import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -42,15 +42,17 @@ export default function SimpleTooltips() {
         <Grid container justifyContent="center">
           <Typography variant="h2" gutterBottom>
             Find your path
-      </Typography>
+          </Typography>
           <Tooltip title="Add" aria-label="add">
             <Fab color="primary" className={classes.fab}>
-              <AddIcon><Link to='/' /></AddIcon>
+              {/* <AddIcon></AddIcon> */}
+              <Link to="mapContainer" smooth={true} duration={1000}>Вниз</Link>
             </Fab>
-          </Tooltip>
+          </Tooltip> 
         </Grid>
       </div>
       }
     </div>
   );
 }
+

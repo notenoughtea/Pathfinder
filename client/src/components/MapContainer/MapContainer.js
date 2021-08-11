@@ -39,7 +39,7 @@ function MapContainer() {
 
   console.log(markersList);
   return isLoaded ? (
-    <GoogleMap className={"mapcontainer"}
+    <GoogleMap className={"mapcontainer"} id="mapContainer"
       mapContainerStyle={containerStyle}
       center={center}
       zoom={zoom}
