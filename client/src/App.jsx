@@ -24,7 +24,7 @@ function App() {
   return (
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
-        <NavBar/>
+        {/* <NavBar/> */}
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
