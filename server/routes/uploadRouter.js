@@ -56,6 +56,7 @@ router
 router
 .route('/image/:id')
 .get(async (req, res, next) => {
+  console.log(req.session);
   const id = req.params.id
   if(id) {
     try {
