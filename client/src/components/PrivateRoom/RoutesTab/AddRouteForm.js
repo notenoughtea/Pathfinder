@@ -8,7 +8,8 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCard } from '../../../store/cardSlice';
+import { addMyCard, axiosMyCards } from '../../../store/cardSlice';
+
 import axios from 'axios';
 
 export default function AddRouteForm(props) {
@@ -19,14 +20,17 @@ export default function AddRouteForm(props) {
     handleClose,
   } = props
 
-  const [formdata, setFromData] = React.useState("");
+  
   const dispatch = useDispatch()
-  const cards = useSelector(state => state.cards);
+  // const myCard = useSelector(state => state.myCard.myCard);
+
+  // React.useEffect(() => {
+  //   dispatch(axiosMyCards());
+  // }, [myCards]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data);
     // eslint-disable-next-line no-console
     axios.post("/routes", {  
       title: data.get('title'),
@@ -36,25 +40,17 @@ export default function AddRouteForm(props) {
       description: data.get('description'),
       lat: lat,
       lng: lng,
+      userId: localStorage.id
     }).then((res) => {
-      dispatch(addCard({
-        title: data.get('title'),
-        length: data.get('length'),
-        difficulty: data.get('difficulty'),
-        address: data.get('address'),
-        description: data.get('description'),
-        lat: lat,
-        lng: lng,
-      }))
-    });
-    console.log({
-      title: data.get('title'),
-      length: data.get('length'),
-      difficulty: data.get('difficulty'),
-      address: data.get('address'),
-      description: data.get('description'),
-      lat: lat,
-      lng: lng,
+      // dispatch(addMyCard({
+      //   title: data.get('title'),
+      //   length: data.get('length'),
+      //   difficulty: data.get('difficulty'),
+      //   address: data.get('address'),
+      //   description: data.get('description'),
+      //   lat: lat,
+      //   lng: lng,
+      // }))
     });
     handleClose()
   };

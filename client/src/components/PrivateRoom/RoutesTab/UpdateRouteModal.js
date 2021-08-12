@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     backgroundColor: "rgb(230, 184, 0)",
     textShadow: "0px 1px 0px #8f8a64",
+    '&:hover': {
+      backgroundColor:"green"
+    },
   }
 }));
 

@@ -51,10 +51,10 @@ const useStyles = makeStyles({
     fontSize: "10px",
     color: "white",
     backgroundColor: "rgb(185, 0, 0)",
-    textShadow: "0px 1px 0px #8f8a64"
-  },
-  description: {
-    
+    textShadow: "0px 1px 0px #8f8a64",
+    '&:hover': {
+      backgroundColor:"green"
+    },
   },
   actions: {
     display: "flex",

@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosCards, updateCard } from '../../../store/cardSlice';
 import axios from 'axios';
+import { axiosMyCards } from '../../../store/myCardSlice';
 
 export default function UpdateRouteForm(props) {
 
@@ -25,20 +26,20 @@ export default function UpdateRouteForm(props) {
     handleClose,
   } = props
 
-  const cards = useSelector(state => state.cards.cards);
-  React.useEffect(() => {
-    dispatch(axiosCards());
-  }, [cards]);
 
+  const dispatch = useDispatch()
+  const myCards = useSelector(state => state.myCards.myCards);
 
+  // React.useEffect(() => {
+  //   dispatch(axiosMyCards());
+  // }, [myCards]);
 
   const [titleState, setTitle] = React.useState(title);
   const [difficultyState, setDifficulty] = React.useState(difficulty);
   const [addressState, setAddress] = React.useState(address);
   const [lengthState, setLength] = React.useState(length);
   const [descriptionState, setDescription] = React.useState(description);
-  const dispatch = useDispatch()
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -54,7 +55,7 @@ export default function UpdateRouteForm(props) {
       lng: lng,
     }).then((res) => {
       console.log("------>", res.data);
-      dispatch(updateCard(cards, {
+      dispatch(updateMyCard(myCards, {
         title: res.data.title,
         length: res.data.length,
         difficulty: res.data.difficulty,
@@ -83,7 +84,7 @@ export default function UpdateRouteForm(props) {
         </Avatar>
         <br/>
         <Typography component="h1" variant="h5">
-          Новый маршрут*
+        Введите новые данные:
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -164,7 +165,7 @@ export default function UpdateRouteForm(props) {
             id="longitude"
           />
           <Button type="submit" color="primary" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-           Добавить маршрут
+            Подтвердить
           </Button>
           <Button type="click" onClick={handleClose} color="secondary" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
             Отмена
