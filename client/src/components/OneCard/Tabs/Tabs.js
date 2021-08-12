@@ -7,6 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Gallery from '../ImageGallery/ImageGallery';
+import CommentBox from '../Comments/Comments';
+import CommentCard from '../CommentCard/CommentCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,7 +68,8 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <CommentBox></CommentBox>
+        <CommentCard/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Gallery/>

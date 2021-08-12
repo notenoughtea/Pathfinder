@@ -15,7 +15,9 @@ export default function Description({data}) {
 
   const { url, title, difficulty, rating, address, length, lng, lat, description } = data;
 
-  let variant, text
+  console.log(typeof(rating));
+
+  let variant, text, rat = rating
 
   if(difficulty < 4) {
     variant = 'green'

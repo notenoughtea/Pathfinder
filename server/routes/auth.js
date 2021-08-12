@@ -45,6 +45,7 @@ router.post('/signin', async function(req, res, next) {
             id,
             email
           };
+          
           return res.json({id, firstName, lastName, email})
         } else res.json({error: "Неверный пароль"})
       }
