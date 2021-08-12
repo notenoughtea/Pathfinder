@@ -1,14 +1,12 @@
 import React from 'react';
-import { useEffect, useState } from "react";
-import { server } from '../../constants';
-import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Timelapse from '../video/timelapse.mp4';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -34,26 +32,27 @@ export default function SimpleTooltips() {
   }, [])
 
   return (
-    <div>
-      {bg && <div style={{
-        height: '270px',
-        backgroundImage: `url(${server}${bg.url})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat'
-      }}>
+    <div className="mainContainer">
+      <div className="intro">
+        <div className="intro__media">
+          <video className="intro_media_video" controled autoPlay loop muted>
+            <source src={Timelapse} type="video/mp4" />
+          </video>
+        </div>
+        <div className="intro__content" >
         <Grid container justifyContent="center">
-          <Typography variant="h2" gutterBottom>
+          <Typography variant="h1" gutterBottom>
             Find your path
-      </Typography>
-          <Tooltip title="Add" aria-label="add">
+          </Typography>
+          <Tooltip title="down" aria-label="add">
             <Fab color="primary" className={classes.fab}>
-              <AddIcon><Link to='/' /></AddIcon>
+              <Link to="mapContainer" smooth={true} duration={100}><ArrowDownwardIcon></ArrowDownwardIcon></Link>
             </Fab>
-          </Tooltip>
-        </Grid>
+           </Tooltip> 
+         </Grid>
+        </div>
       </div>
-      }
     </div>
-  );
+  )
 }
+
