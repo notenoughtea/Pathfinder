@@ -8,7 +8,7 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCard } from '../../store/cardSlice';
+import { addCard } from '../../../store/cardSlice';
 import axios from 'axios';
 
 export default function AddRouteForm(props) {
@@ -37,7 +37,7 @@ export default function AddRouteForm(props) {
       lat: lat,
       lng: lng,
     }).then((res) => {
-      dispatch(addCard(cards, {
+      dispatch(addCard({
         title: data.get('title'),
         length: data.get('length'),
         difficulty: data.get('difficulty'),

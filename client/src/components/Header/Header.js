@@ -39,9 +39,9 @@ export default function MenuAppBar() {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     console.log(localStorage);

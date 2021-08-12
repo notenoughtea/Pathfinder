@@ -5,9 +5,9 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { useSelector } from 'react-redux';
+import seal from './seal.png'
+import "./profile.module.css"
+import UpdateProfileModal from './UpdateProfileModal';
 
   const useStyles = makeStyles({
     root: {
@@ -16,11 +16,19 @@ import { useSelector } from 'react-redux';
     media: {
       height: 350,
     },
+    seal:{
+      height: 112,
+      width: 126,
+    },
   });
 
 export default function Profile() {
-  const cards = useSelector(state => state.cards.cards);
   const classes = useStyles();
+  const {
+    email,
+    firstName,
+    lastName,
+  } = localStorage;
 
   return (
     <Card className={classes.root}>
@@ -31,18 +39,27 @@ export default function Profile() {
         title="header"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          ФИО
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Описание профиля
-        </Typography>
+        <h3 >
+          {firstName}
+        </h3>
+        <br/>
+        <h5 >
+          {lastName}
+          </h5>
+          <br/>
+        <h5 >
+          {email}
+          </h5>
+          <br/>
       </CardContent>
+      <CardMedia
+        className={classes.seal}
+        image={seal}
+        title="header"
+      />
     </CardActionArea>
     <CardActions>
-      <Button size="small" color="primary">
-        Редактировать
-      </Button>
+    <UpdateProfileModal/>
     </CardActions>
   </Card>
   );

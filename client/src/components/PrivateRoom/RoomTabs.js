@@ -6,8 +6,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import AddRouteModal from './AddRouteModal';
-import Profile from './Profile';
+import AddRouteModal from './RoutesTab/AddRouteModal';
+import Profile from './ProfileTab/Profile';
+import UpdateRouteModal from './RoutesTab/UpdateRouteModal';
+import MyCard from './RoutesTab/MyCard';
+import RoutesContainer from './RoutesTab/RoutesContainer';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -78,14 +81,11 @@ export default function RoomTabs() {
         <Profile/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Мои маршруты
-        <AddRouteModal/>
+      <RoutesContainer/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Избранное
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Фото
       </TabPanel>
     </div>
   );
