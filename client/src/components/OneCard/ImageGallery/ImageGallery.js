@@ -1,7 +1,7 @@
 import ImageGallery from "react-image-gallery";
 import { Form, Accordion, Card } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
@@ -59,31 +59,27 @@ export default function Gallery() {
   const dispatch = useDispatch()
   const { id } = useParams();
   const images = useSelector(state => state.gallery.photo)
+  const [reload, setReload] = useState(true)
 
   console.log(images);
 
-  // const handler = useCallback(()=>{
-  //   dispatch(axiosGallery(id))
-  // },[])
   useEffect(()=>{
     dispatch(axiosGallery(id))
-  }, [images.length])
+  }, [reload])
+
+  function handler(){
+    setReload(prev => !prev)
+    console.log(reload);
+  }
   
-
-  // photo.push({
-  //   original: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",
-  //   thumbnail: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",   
-  // })
-
-  // console.log(images);
 
   return (
     <>
-      <Accordion style={{ marginBottom: "20px" }}>
+      <Accordion onMouseMove={e => handler()} style={{ marginBottom: "20px" }}>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Добавить свое фото</Accordion.Header>
           <Accordion.Body>
-            <MyDropzone />
+            <MyDropzone  />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

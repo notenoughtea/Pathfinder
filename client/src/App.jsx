@@ -11,6 +11,7 @@ import SignUp from "./components/Signup/Signup";
 import MenuAppBar from './components/Header/Header';
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
+import FindPath from './components/OneCard/FindPath/FindPath';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
         <MenuAppBar />
+        
         <Switch>
           <Route exact path="/">
             <MainGreeting />
