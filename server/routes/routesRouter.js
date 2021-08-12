@@ -56,13 +56,13 @@ router
       }
     })
     .delete(async (req, res) => {
-      res.sendStatus(200)
       try {
         if(req.body.id) {
           const routeToDelete = await Routes.findOne({where: {
             id: req.body.id 
           }});
           routeToDelete.destroy()
+          res.sendStatus(200)
           }
       } catch (err) {
         res.status(500);
@@ -71,14 +71,25 @@ router
 
     // Карточки созданные пользователем
     router.route('/routes/mycards')
-    .get(async (req, res, next) => {
-    console.log("запрос на myCards");
-      const references = await Reference.findAll({
+    .put(async (req, res, next) => {
+    try {
+    const references = await Reference.findAll({
         where: {
-          user_id: req.session.
+          user_id: req.body.userId,
+          creator: true
         }
       });
-      res.json(routes);
+    const idArr = references.map((e)=>e.routes_id)
+    const myCards = await Routes.findAll({
+      where: {
+        id: idArr
+      }
+    });
+    res.status(200).json(myCards);
+
+      } catch (err) {
+      res.status(500);
+      }
     })
 
 

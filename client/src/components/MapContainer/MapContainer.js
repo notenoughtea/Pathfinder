@@ -56,7 +56,6 @@ function MapContainer() {
     googleMapsApiKey: "AIzaSyApzvj3AYiAkv1Vr9x48zJ1NpK4DuqE-1M",
   });
 
-  const [modal, setmodal] = useState('');
   const [center, setCenter] = useState(defaultCenter);
   const [zoom, setZoom] = useState(defaultZoom);
   const [markerPosition, setMarkerPosition] = useState(defaultMarkerPosition);
@@ -64,27 +63,26 @@ function MapContainer() {
   const [markersList, setMarkersList] = useState([]);
   const [open, setOpen] = React.useState(false);
   const cards = useSelector(state => state.cards.cards);
-
-  // useEffect(() => {
-  //   setMarkersList(cards);
-  // }, [cards]);
-  // console.log(markersList);
+  const [popOver, setPopOver] = useState('');
+  useEffect(() => {
+    setMarkersList(cards);
+  }, [cards]);
   const allMarks = () => {
 
     if (cards.length) {
 
 
-      const modal = (el) => {
+      const popover = (el) => {
         <MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description} />
       }
       const handleOpen = (el) => {
         setOpen(true);
-        setmodal(<MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description} />)
+        setPopOver(<MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description} />)
       };
 
       const handleClose = () => {
         setOpen(false);
-        setmodal('')
+        setPopOver('')
       }
       return cards.map((el) => (
 
@@ -97,7 +95,7 @@ function MapContainer() {
           title={el.title}
           onClick={() => handleOpen(el)}
         >
-          {/* {modal(el)} */}
+          {popover(el)}
         </Marker>
       ));
     }

@@ -3,10 +3,11 @@ import axios from "axios";
 
 // вываливаем карточки с бэка: 
 export const axiosMyCards = createAsyncThunk(
-  'cards/axiosMyCards',
+  'myCards/axiosMyCards',
   async function(_, {rejectWithValue}) {
     try {
-      const response = await axios('http://127.0.0.1:3001/routes/mycards');
+      const response = await axios.put('http://127.0.0.1:3001/routes/mycards', {userId: localStorage.id});
+      console.log("======>", response );
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }
@@ -22,7 +23,7 @@ const setError = (state, action) => {
   state.error = action.payload;
 }
 
-const myCardSlice = createSlice({
+const myCardsSlice = createSlice({
   name: 'myCards',
   initialState: {
     myCards: [],
@@ -30,17 +31,17 @@ const myCardSlice = createSlice({
       error: null
   },
   reducers: {
-  addCard (state, action) {
+  addMyCard (state, action) {
       state.myCards.push(action.payload)
   },
-  deleteCard (state, action) {
+  deleteMyCard (state, action) {
     const {
       id
     } = action.payload
        const index = (state.myCards).indexOf(state.myCards.find((e)=>(e.id===id)));
         state.myCards.splice(index, 1)
     },
-  updateCard (state, action) {
+  updateMyCard (state, action) {
     const {
       title,
       length,
@@ -81,5 +82,7 @@ const myCardSlice = createSlice({
   },
 });
 
-// export const {addCard} = cardSlice.actions
-export default myCardSlice.reducer;
+export const {addMyCard} = myCardsSlice.actions
+export const {updateMyCard} = myCardsSlice.actions
+export const {deleteMyCard} = myCardsSlice.actions
+export default myCardsSlice.reducer;

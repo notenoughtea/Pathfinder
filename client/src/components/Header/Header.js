@@ -44,12 +44,10 @@ export default function MenuAppBar() {
   // };
 
   const handleMenu = (event) => {
-    console.log(localStorage);
     setAnchorEl(event.currentTarget);
   };
-
+  
   useEffect(()=>{
-    console.log(localStorage.auth);
     if(localStorage.auth) setAuth(true)
     else setAuth(false)
   },[localStorage.auth])

@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { axiosCards, updateCard } from '../../../store/cardSlice';
 import axios from 'axios';
-import { axiosMyCards } from '../../../store/myCardSlice';
+import { axiosMyCards, updateMyCard } from '../../../store/myCardsSlice';
 
 export default function UpdateRouteForm(props) {
 

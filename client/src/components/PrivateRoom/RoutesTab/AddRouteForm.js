@@ -8,7 +8,7 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMyCard, axiosMyCards } from '../../../store/cardSlice';
+import { addMyCard, axiosMyCards } from '../../../store/myCardsSlice';
 
 import axios from 'axios';
 
@@ -22,11 +22,12 @@ export default function AddRouteForm(props) {
 
   
   const dispatch = useDispatch()
-  // const myCard = useSelector(state => state.myCard.myCard);
+  const myCards = useSelector(state => state.myCards.myCards);
 
-  // React.useEffect(() => {
-  //   dispatch(axiosMyCards());
-  // }, [myCards]);
+  React.useEffect(() => {
+    dispatch(axiosMyCards());
+  }, []);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,15 +43,15 @@ export default function AddRouteForm(props) {
       lng: lng,
       userId: localStorage.id
     }).then((res) => {
-      // dispatch(addMyCard({
-      //   title: data.get('title'),
-      //   length: data.get('length'),
-      //   difficulty: data.get('difficulty'),
-      //   address: data.get('address'),
-      //   description: data.get('description'),
-      //   lat: lat,
-      //   lng: lng,
-      // }))
+      dispatch(addMyCard({
+        title: data.get('title'),
+        length: data.get('length'),
+        difficulty: data.get('difficulty'),
+        address: data.get('address'),
+        description: data.get('description'),
+        lat: lat,
+        lng: lng,
+      }))
     });
     handleClose()
   };
