@@ -32,9 +32,11 @@ export default function SimpleTooltips() {
         </div>
         <div className="intro__content" >
         <Grid container justifyContent="center">
-          <Typography variant="h1" gutterBottom>
+          <Typography variant="h1" gutterBottom style={{textShadow: '2px 8px 6px rgba(0,0,0,0.2), 0px -5px 35px rgba(255,255,255,0.3)'}}>
             Find your path
-          </Typography>
+          </Typography> 
+         </Grid>
+         <Grid container justifyContent="center">
           <Tooltip title="down" aria-label="add">
             <Fab color="primary" className={classes.fab}>
               <Link to="mapContainer" smooth={true} duration={100}><ArrowDownwardIcon></ArrowDownwardIcon></Link>

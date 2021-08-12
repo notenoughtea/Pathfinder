@@ -73,7 +73,7 @@ export default function Cardlist() {
         {cards.map((item) => (
           <div className="cardOne" key={item.id}>
             <Card className={classes.root}>
-            <Link to={`/card/${item.id}`}>
+            <Link to={`/card/${item.id}`} style={{ textDecoration: 'none' }}>
               <CardActionArea>
                 <CardMedia
                   component="img"
