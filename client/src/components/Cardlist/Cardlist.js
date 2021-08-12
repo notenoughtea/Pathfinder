@@ -15,6 +15,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { server } from '../../constants';
 import UpBtn from '../UpBtn/UpBtn';
+import CardRoutes from './Card/Card';
 
 const responsive = {
   superLargeDesktop: {
@@ -35,14 +36,9 @@ const responsive = {
   }
 };
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-});
 
 export default function Cardlist() {
-  const classes = useStyles();
+  
   const cards = useSelector(state => state.cards.cards);
 
   console.log(cards);
@@ -68,32 +64,7 @@ export default function Cardlist() {
       </div>
       <Carousel className="carouselContainer" responsive={responsive}>
         {cards.map((item) => (
-          <div className="cardOne" key={item.id}>
-            <Card className={classes.root}>
-              <Link to={`/card/${item.id}`} style={{ textDecoration: 'none' }}>
-                <CardActionArea>
-                  <div style={{
-                    background: "rgb(2,0,36)",
-                    display: "flex",
-                    backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${item.url})`,
-                    backgroundSize: 'cover',
-                    height: `35vh`,
-                    borderRadius: '5px'
-                  }}><div><Typography gutterBottom variant="h5" component="h2" style={{ color: 'white', marginTop: '30vh', marginLeft: '1vw' }}>
-                    {item.title}
-                  </Typography></div></div>
-                  <CardContent>
-                    <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                     {item.difficulty} ⚡  &nbsp; &nbsp; &nbsp; {item.rating} ⭐  &nbsp; &nbsp; &nbsp; {item.length} 🐾
-              </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      Oписание: &nbsp;{item.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Link>
-            </Card>
-          </div>
+          <CardRoutes item={item}/>
         ))}
       </Carousel>
       <UpBtn></UpBtn>
