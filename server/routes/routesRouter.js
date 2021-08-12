@@ -72,5 +72,4 @@ router.post('/one', async (req,res) => {
 router.post('/background', (req,res) => {
   res.status(200).send({url: '/img/IMG_0507.png'})
 })
-
 module.exports = router;

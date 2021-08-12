@@ -35,24 +35,24 @@ function MyDropzone() {
   );
 }
 
-const images = [
-  {
-    original: "https://picsum.photos/id/1018/1000/600/",
-    thumbnail: "https://picsum.photos/id/1018/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1015/1000/600/",
-    thumbnail: "https://picsum.photos/id/1015/250/150/",
-  },
-  {
-    original: "https://picsum.photos/id/1019/1000/600/",
-    thumbnail: "https://picsum.photos/id/1019/250/150/",
-  },
-  {
-    original: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",
-    thumbnail: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",   
-  },
-];
+// const images = [
+//   {
+//     original: "https://picsum.photos/id/1018/1000/600/",
+//     thumbnail: "https://picsum.photos/id/1018/250/150/",
+//   },
+//   {
+//     original: "https://picsum.photos/id/1015/1000/600/",
+//     thumbnail: "https://picsum.photos/id/1015/250/150/",
+//   },
+//   {
+//     original: "https://picsum.photos/id/1019/1000/600/",
+//     thumbnail: "https://picsum.photos/id/1019/250/150/",
+//   },
+//   {
+//     original: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",
+//     thumbnail: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",   
+//   },
+// ];
 
 export default function Gallery() {
 
@@ -62,12 +62,12 @@ export default function Gallery() {
 
   console.log(images);
 
-  const handler = useCallback(()=>{
-    dispatch(axiosGallery(id))
-  },[])
+  // const handler = useCallback(()=>{
+  //   dispatch(axiosGallery(id))
+  // },[])
   useEffect(()=>{
-    handler()
-  }, [handler ])
+    dispatch(axiosGallery(id))
+  }, [images.length])
   
 
   // photo.push({

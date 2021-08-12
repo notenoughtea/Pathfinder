@@ -6,10 +6,12 @@ export const axiosCards = createAsyncThunk(
   'cards/axiosCards',
   async function(_, {rejectWithValue}) {
     try {
-      const response = await axios('http://127.0.0.1:3001/upload/image');
+      console.log('axios');
+      const response = await axios('http://127.0.0.1:3001/routes');
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }
+      console.log(response.data);
       return response.data;// пуляем Routes.findAll() с бэка
     } catch (error) {
       return rejectWithValue(error.message)

@@ -2,21 +2,20 @@ import React from 'react'
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { axiosCards } from './store/cardSlice';//+Roma ! вместо reduxToolki - store
-import Cardlist from './components/Cardlist/Cardlist';//+Roma
-import OneCard from './components/OneCard/OneCard';//+Roma
+import { axiosCards } from './store/cardSlice';
+import Cardlist from './components/Cardlist/Cardlist';
+import OneCard from './components/OneCard/OneCard';
 import SignIn from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
  import MapContainer from "./components/MapContainer/MapContainer"
 import MenuAppBar from './components/Header/Header';
-import NavBar from "./components/Navbar/NavBar";
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
 
 function App() {
 
-  const { status, error } = useSelector(state => state.cards);//+Roma !
-  const dispatch = useDispatch();//+Roma: вместо axios.get('/routes') !
+  const { status, error } = useSelector(state => state.cards);
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(axiosCards());
   }, []);
@@ -24,15 +23,14 @@ function App() {
   return (
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
-        <NavBar/>
         <MenuAppBar />
         <Switch>
           <Route exact path="/">
             <MainGreeting />
+            <MapContainer />
             {status === 'loading' && <h2>Loading...</h2>}
             {error && <h2>An error occured: {error}</h2>}
             <Cardlist />
-            <MapContainer />
           </Route>
           <Route exact path="/signup">
             <SignUp />
