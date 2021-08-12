@@ -1,13 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
+import {CardActions} from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,47 +30,36 @@ const useStyles = makeStyles((theme) => ({
 export default function MarkerCard(props) {
 
   const {
-    title,
-    difficulty,
-    rating,
-    address,
-    length,
-    description
+    cardProps
   } = props
+  console.log(cardProps);
 
-  console.log(`${title}`);
   const classes = useStyles();
   return (
 
-    <Card className={classes.root}>
-      <CardHeader
-        title={title}
-        subheader={address}
-      />
-      <CardMedia
-        className={classes.media}
-        image="https://picsum.photos/500/800"
-        title={title}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        description: {description}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       difficulty: {difficulty}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       rating: {rating}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       length: {length}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+<Card className={classes.root}>
+              <Link to={`/card/${cardProps.id}`} style={{ textDecoration: 'none' }}>
+                <CardActionArea>
+                  <div style={{
+                    background: "rgb(2,0,36)",
+                    display: "flex",
+                    // backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${url})`,
+                    backgroundSize: 'cover',
+                    height: `35vh`,
+                    borderRadius: '5px'
+                  }}><div><Typography gutterBottom variant="h5" component="h2" style={{ color: 'white', marginTop: '30vh', marginLeft: '1vw' }}>
+                    {cardProps.title}
+                  </Typography></div></div>
+                  <CardContent>
+                    <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+                     {cardProps.difficulty} ⚡  &nbsp; &nbsp; &nbsp; {cardProps.rating} ⭐  &nbsp; &nbsp; &nbsp; {cardProps.length} 🐾
+              </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      Oписание: &nbsp;{cardProps.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Link>
+            </Card>
   );
 }

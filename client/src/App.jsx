@@ -23,7 +23,6 @@ function App() {
   }, []);
   
   const myCards = useSelector(state => state.myCards);
-  console.log("----->", myCards);
   React.useEffect(() => {
     dispatch(axiosMyCards());
   }, []);
@@ -32,7 +31,6 @@ function App() {
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
         <MenuAppBar />
-        
         <Switch>
           <Route exact path="/">
             <MainGreeting />

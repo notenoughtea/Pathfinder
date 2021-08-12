@@ -5,9 +5,7 @@ import {
   Marker,
 } from "@react-google-maps/api";
 import "./style.module.css";
-import MarkerModal from "./MarkerModal";
 import { useSelector } from "react-redux";
-import { Modal } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';//
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -15,6 +13,8 @@ import { Link } from 'react-scroll';
 import Grid from '@material-ui/core/Grid';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import { InfoBox } from '@react-google-maps/api';
+import MarkerCard from "./MarkerCard";
 
 const useStyles = makeStyles((theme) => ({//
   fab: {
@@ -57,45 +57,68 @@ function MapContainer() {
 
   const [center, setCenter] = useState(defaultCenter);
   const [zoom, setZoom] = useState(defaultZoom);
-  const [markerPosition, setMarkerPosition] = useState(defaultMarkerPosition);
-  const [markerVisibility, setMarkerVisibility] = useState(0);
   const [markersList, setMarkersList] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [cords, setCords] = useState({});
+  const [cardProps, setCardProps] = useState({});
+
   const cards = useSelector(state => state.cards.cards);
-  const [popOver, setPopOver] = useState('');
+
+  const handler = async (e1, e2, e3) => {
+  await setCords(e1);
+  await setCardProps(e2)
+  await setOpen(e3);
+  }
+
+
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const toggle = () => setPopoverOpen(!popoverOpen);
+
+
   useEffect(() => {
     setMarkersList(cards);
   }, [cards]);
   const allMarks = () => {
+    if (cards) {
 
-    if (cards.length) {
+  const onLoad = infoBox => {
+    console.log('infoBox: ', infoBox)
+  };
 
-
-      const popover = (el) => {
-        <MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description} />
-      }
-      const handleOpen = (el) => {
-        setOpen(true);
-        setPopOver(<MarkerModal key={el.id} open={open} handleClose={handleClose} title={el.title} difficulty={el.difficulty} rating={el.rating} address={el.address} length={el.length} description={el.description} />)
-      };
-
-      const handleClose = () => {
-        setOpen(false);
-        setPopOver('')
-      }
       return cards.map((el) => (
 
-        <Marker
+    <div>
+      <Marker
           clickable={true}
           position={{
             lat: el.lat / 1,
             lng: el.lng / 1,
           }}
           title={el.title}
-          onClick={() => handleOpen(el)}
+          onClick={() => 
+            {
+              handler({
+                lat: el.lat / 1,
+                lng: el.lng / 1,
+              }, el, true)
+            }}
         >
-          {popover(el)}
+
+          {/* <MarkerCard /> */}
         </Marker>
+        {open && (
+        <InfoBox
+        onLoad={onLoad}
+        options={options}
+        position={cords}
+        
+        >
+        <MarkerCard cardProps={cardProps}/>
+    </InfoBox>
+      )} 
+    </div>
+    
       ));
     }
     return null
@@ -121,6 +144,8 @@ function MapContainer() {
         mapTypeId={"hybrid"}
         id="mapContainer"
       >
+        {/* { popoverOpen ? <MarkerCard popOver={popOver}/> : ""} */}
+      
         {allMarks()}
       </GoogleMap>
       <Grid style={{
