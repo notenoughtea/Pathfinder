@@ -32,7 +32,7 @@ export default function Description({data}) {
     <Card style={{border: 'none'}} body>{description}
       <hr></hr>
       <div className={style.length}>
-      <Card.Subtitle className="mb-2 text-muted">Длинна</Card.Subtitle>
+      <Card.Subtitle className="mb-2 text-muted">Длина</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Рейтинг</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Сложность</Card.Subtitle>
       </div>

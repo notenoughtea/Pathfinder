@@ -29,9 +29,8 @@ const useStyles = makeStyles((theme) => ({//
 
 
 const containerStyle = {
-  width: "850px",
-  height: "500px",
-  borderRadius: '10px'
+  width: "100vw",
+  height: "100vh",
 };
 
 const defaultZoom = 10;
@@ -104,7 +103,7 @@ function MapContainer() {
 
   return isLoaded ? (
     <div>
-      <div>
+      {/* <div>
         <div id="mapContainer" style={{
              height: '250px',
              backgroundImage: `url(http://localhost:3001/img/bg_2.jpg)`,
@@ -113,24 +112,21 @@ function MapContainer() {
              backgroundRepeat: 'no-repeat'
            }}>
         </div>
-      </div>
-    <div style={{
-      marginTop: '2%',
-      marginBottom: '1%',
-      marginLeft: '20%',
-    }}>
+      </div> */}
+    <div>
       <GoogleMap className={"mapcontainer"} 
         mapContainerStyle={containerStyle}
         center={center}
         zoom={zoom}
         mapTypeId={"hybrid"}
+        id="mapContainer"
       >
         {allMarks()}
       </GoogleMap>
       <Grid style={{
         position: 'absolute',
-        top: '185%',
-        left: '80%'
+        top: '175%',
+        left: '93%'
       }}>
         <Tooltip title="down" aria-label="add">
           <Fab color="primary" className={classes.fab}>
@@ -140,8 +136,8 @@ function MapContainer() {
       </Grid>
       <Grid style={{
         position: 'absolute',
-        top: '155%',
-        left: '80%'
+        top: '125%',
+        left: '93%'
       }}>
         <Tooltip title="up" aria-label="add">
           <Fab color="primary" className={classes.fab}>

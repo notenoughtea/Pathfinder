@@ -8,12 +8,11 @@
   left: 20%;
   color: rgb(255, 255, 255);
 }
-/* .shadow {
-  background: #00000077;
-  width: 100%;
-  height: 30vh;
-
-} */
+.shadow {
+  margin-top: 50vh;
+  margin-left: 5vw;
+  font-size: 20px;
+}
 .diff {
   display: flex;
 }
