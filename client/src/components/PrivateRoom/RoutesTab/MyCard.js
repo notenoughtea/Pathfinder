@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     position:"relative",
     minHeight: "100%",
     height: 'auto',
-    height: "100%"
+    height: "100%",
   },
   media: {
     background: "rgb(2,0,36)",
@@ -80,7 +80,8 @@ const handleDelete = (id) => {
 }
   return (
     
-<Card id={id} className={classes.root}>
+<Card id={id} className={classes.root} style={{
+    marginLeft: '70vh'}}>
           <CardActionArea>
             <CardContent className={classes.media}>
               <div className={classes.media2}>

@@ -56,7 +56,7 @@ export default function AddRouteModal() {
 
   return (
     <div>
-      <Button color="primary" variant="contained" onClick={handleOpen}>Добавить маршрут</Button>
+      <Button color="primary" variant="contained" onClick={handleOpen} style={{marginLeft: '77vh', marginBottom: '20px', }}>Добавить маршрут</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
