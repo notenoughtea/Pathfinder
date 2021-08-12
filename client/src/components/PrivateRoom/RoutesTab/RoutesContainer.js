@@ -16,8 +16,8 @@ export default function RoutesContainer() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-        <AddRouteModal/>
-      {cards.map((card) => <MyCard lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
+      <AddRouteModal />
+        {cards.map((card) => <MyCard url={card.url} lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description} />)}
     </div>
   );
 }
