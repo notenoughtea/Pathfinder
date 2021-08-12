@@ -82,9 +82,6 @@ export default function CardRoutes({ item }) {
                   {text}
                 </Badge>
               </div>
-              <Typography variant="body2" color="textSecondary" component="p">
-                &nbsp;{item.description}
-              </Typography>
             </CardContent>
           </CardActionArea>
         </Link>

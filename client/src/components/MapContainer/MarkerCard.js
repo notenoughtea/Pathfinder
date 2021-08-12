@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardRoutes(cardProps) {
+export default function CardRoutes({cardProps}) {
   const classes = useStyles();
   let variant, text;
 
@@ -48,7 +48,7 @@ export default function CardRoutes(cardProps) {
               <div>
                 <Typography
                   gutterBottom
-                  variant="h5"
+                  variant="h6"
                   component="h2"
                   style={{
                     color: "white",
@@ -82,9 +82,6 @@ export default function CardRoutes(cardProps) {
                   {text}
                 </Badge>
               </div>
-              <Typography variant="body2" color="textSecondary" component="p">
-                &nbsp;{cardProps.description}
-              </Typography>
             </CardContent>
           </CardActionArea>
         </Link>

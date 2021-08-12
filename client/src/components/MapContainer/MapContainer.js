@@ -33,7 +33,7 @@ const containerStyle = {
   height: "100vh",
 };
 
-const defaultZoom = 10;
+const defaultZoom = 9;
 const defaultCenter = {
   lat: 43.44514365102102,
   lng: 41.73673191647548,
@@ -90,6 +90,7 @@ function MapContainer() {
 
     <div>
       <Marker
+          key={el.id}
           clickable={true}
           position={{
             lat: el.lat / 1,
