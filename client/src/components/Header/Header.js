@@ -68,8 +68,8 @@ export default function MenuAppBar() {
 
 
   return (
-    <div className={classes.root} id="header">
-      <AppBar position="static">
+    <div  className={classes.root} id="header">
+      <AppBar style={{backgroundColor: 'rgb(86, 139, 255)'}} position="static">
         <Toolbar>
           <IconButton onClick={handleMenu} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />

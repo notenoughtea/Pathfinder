@@ -58,7 +58,7 @@ export default function Cardlist() {
     <div id="cardlist">
       <div>
         {bg && <div className="bg" style={{
-          height: '285px',
+          height: '270px',
           backgroundImage: `url(${server}${bg.url})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
