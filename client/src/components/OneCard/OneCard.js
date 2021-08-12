@@ -27,7 +27,9 @@ function OneCard() {
 
   return (
 
-    <div  className={style.title}>
+    <div  className={style.title} style={{
+      borderRadius: '5px'
+    }}>
       <Title card={one} img={`${server}${one.url}`}/>
       <div className={style.blog} >
         <Description data={one}/>

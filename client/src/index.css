@@ -27,10 +27,6 @@ code {
   margin-left: 10%
 }
 
-a {
-  text-decoration: none;
-}
-
 .intro {
   display: flex;
   position: relative;
@@ -72,3 +68,4 @@ a {
   color: white;
   text-align: center;
 }
+

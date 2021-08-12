@@ -2,10 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { useEffect, useState } from "react";
@@ -61,45 +58,39 @@ export default function Cardlist() {
     <div id="cardlist">
       <div>
         {bg && <div className="bg" style={{
-             height: '300px',
-             backgroundImage: `url(${server}${bg.url})`,
-              backgroundPosition: 'center',
-             backgroundSize: 'cover',
-             backgroundRepeat: 'no-repeat'
-           }}>
+          height: '270px',
+          backgroundImage: `url(${server}${bg.url})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat'
+        }}>
         </div>}
       </div>
       <Carousel className="carouselContainer" responsive={responsive}>
         {cards.map((item) => (
           <div className="cardOne" key={item.id}>
             <Card className={classes.root}>
-            <Link to={`/card/${item.id}`}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt={item.title}
-                  height="140"
-                  image={`${server}${item.url}`}
-                  title={item.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+              <Link to={`/card/${item.id}`} style={{ textDecoration: 'none' }}>
+                <CardActionArea>
+                  <div style={{
+                    background: "rgb(2,0,36)",
+                    display: "flex",
+                    backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${item.url})`,
+                    backgroundSize: 'cover',
+                    height: `35vh`,
+                    borderRadius: '5px'
+                  }}><div><Typography gutterBottom variant="h5" component="h2" style={{ color: 'white', marginTop: '30vh', marginLeft: '1vw' }}>
                     {item.title}
-                  </Typography>
-                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                    Сложность: {item.difficulty} ⚡
+                  </Typography></div></div>
+                  <CardContent>
+                    <Typography gutterBottom variant="body2" color="textSecondary" component="p">
+                     {item.difficulty} ⚡  &nbsp; &nbsp; &nbsp; {item.rating} ⭐  &nbsp; &nbsp; &nbsp; {item.length} 🐾
               </Typography>
-                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                    Рейтинг: {item.rating} ⭐
-              </Typography>
-                  <Typography gutterBottom variant="body2" color="textSecondary" component="p">
-                    Продолжительность - км: {item.length} 🐾
-              </Typography>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    Oписание: {item.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      Oписание: &nbsp;{item.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Link>
             </Card>
           </div>
