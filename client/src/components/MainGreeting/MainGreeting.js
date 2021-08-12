@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Timelapse from '../video/timelapse.mp4';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import FindPath from '../OneCard/FindPath/FindPath';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -31,16 +32,18 @@ export default function SimpleTooltips() {
           </video>
         </div>
         <div className="intro__content" >
-        <Grid container justifyContent="center">
-          <Typography variant="h1" gutterBottom>
+        <Link to="mapContainer" style={{cursor: 'pointer'}} smooth={true} duration={100}><FindPath/></Link>
+        {/* <Grid container justifyContent="center">
+
+          {/* <Typography variant="h1" gutterBottom>
             Find your path
-          </Typography>
-          <Tooltip title="down" aria-label="add">
+          </Typography> */}
+          {/* <Tooltip title="down" aria-label="add">
             <Fab color="primary" className={classes.fab}>
-              <Link to="mapContainer" smooth={true} duration={100}><ArrowDownwardIcon></ArrowDownwardIcon></Link>
+              
             </Fab>
            </Tooltip> 
-         </Grid>
+         </Grid> */} 
         </div>
       </div>
     </div>
