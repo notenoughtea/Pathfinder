@@ -95,8 +95,8 @@ export default function MyCard(props) {
   return (
 
     <Card id={id} className={classes.root}>
-      <Link to={`/card/${id}`} style={{ textDecoration: "none" }}>
         <CardActionArea>
+      <Link to={`/card/${id}`} style={{ textDecoration: "none" }}>
           <CardContent className={classes.media}>
             <div className={classes.media2}>
               <Typography>
@@ -104,6 +104,7 @@ export default function MyCard(props) {
               </Typography>
             </div>
           </CardContent>
+          </Link>
           <CardContent>
             <div
               style={{
@@ -137,7 +138,6 @@ export default function MyCard(props) {
             Удалить
             </Button>
         </CardActions>
-      </Link>
     </Card>
   );
 }

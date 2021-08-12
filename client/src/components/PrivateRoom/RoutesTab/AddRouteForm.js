@@ -25,6 +25,7 @@ export default function AddRouteForm(props) {
   const myCards = useSelector(state => state.myCards.myCards);
 
   React.useEffect(() => {
+    console.log(myCards);
     dispatch(axiosMyCards());
   }, []);
 

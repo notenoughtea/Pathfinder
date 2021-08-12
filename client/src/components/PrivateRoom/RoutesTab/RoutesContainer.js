@@ -18,9 +18,9 @@ export default function RoutesContainer() {
   const myCards = useSelector(state => state.myCards.myCards);
   
   console.log("----->", myCards);
-  // React.useEffect(() => {
-  //   dispatch(axiosMyCards());
-  // }, []);
+  React.useEffect(() => {
+    dispatch(axiosMyCards());
+  }, []);
 
 
   const cards = useSelector(state => state.cards.cards);
