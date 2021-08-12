@@ -3,7 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -39,6 +44,12 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
+  note: {
+    position: 'absolute',
+    top: '229vh',
+    left: '33vw',
+    color: 'white',
+  }
 });
 
 export default function Cardlist() {
@@ -66,6 +77,7 @@ export default function Cardlist() {
         }}>
         </div>}
       </div>
+      <div className={classes.note}><h2>Дорогу осилит идущий</h2></div>
       <Carousel className="carouselContainer" responsive={responsive}>
         {cards.map((item) => (
           <div className="cardOne" key={item.id}>
