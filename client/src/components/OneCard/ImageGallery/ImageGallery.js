@@ -1,4 +1,4 @@
-import ImageGallery from "react-image-gallery";
+import ImageGallery, { getCurrentIndex } from "react-image-gallery";
 import { Form, Accordion, Card } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import React, { useCallback, useEffect, useState } from "react";
@@ -35,25 +35,6 @@ function MyDropzone() {
   );
 }
 
-// const images = [
-//   {
-//     original: "https://picsum.photos/id/1018/1000/600/",
-//     thumbnail: "https://picsum.photos/id/1018/250/150/",
-//   },
-//   {
-//     original: "https://picsum.photos/id/1015/1000/600/",
-//     thumbnail: "https://picsum.photos/id/1015/250/150/",
-//   },
-//   {
-//     original: "https://picsum.photos/id/1019/1000/600/",
-//     thumbnail: "https://picsum.photos/id/1019/250/150/",
-//   },
-//   {
-//     original: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",
-//     thumbnail: "http://127.0.0.1:3001/img/30feac44-6b4a-4811-89e8-93eb22151c3b-screenshot-from-2021-06-19-12-52-02.png",   
-//   },
-// ];
-
 export default function Gallery() {
 
   const dispatch = useDispatch()
@@ -72,6 +53,11 @@ export default function Gallery() {
     console.log(reload);
   }
   
+  function deletePhoto(e) {
+    console.log(e);
+  }
+
+
 
   return (
     <>
@@ -87,7 +73,10 @@ export default function Gallery() {
         <Form.Label>Large file input example</Form.Label>
         <Form.Control type="file" size="lg" />
       </Form.Group> */}
-      <ImageGallery items={images} />
+      {images.length ?
+      <ImageGallery onClick={e => deletePhoto(e)} items={images} /> :
+      <div></div>
+      }
     </>
   );
 }
