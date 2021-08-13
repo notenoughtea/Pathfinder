@@ -11,6 +11,7 @@ import Profile from './ProfileTab/Profile';
 import UpdateRouteModal from './RoutesTab/UpdateRouteModal';
 import MyCard from './RoutesTab/MyCard';
 import RoutesContainer from './RoutesTab/RoutesContainer';
+import PhotosContainer from './RoutesTab/PhotosContainer';//+ roma
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -86,6 +87,7 @@ export default function RoomTabs() {
       <TabPanel value={value} index={2}>
       </TabPanel>
       <TabPanel value={value} index={3}>
+        <PhotosContainer />
       </TabPanel>
     </div>
   );

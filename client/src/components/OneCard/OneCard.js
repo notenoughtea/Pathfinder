@@ -53,7 +53,7 @@ function OneCard() {
           marginRight: 'auto',
         }} item={card}/>
         </div>
-        // </Link>
+         // </Link> 
         ))}
         </div >
         </div>
