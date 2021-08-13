@@ -64,7 +64,7 @@ export default function SimpleTabs() {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="ОТзывы" {...a11yProps(0)} />
           <Tab label="Фото" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -74,9 +74,9 @@ export default function SimpleTabs() {
       <TabPanel value={value} index={1}>
         <Gallery/>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }

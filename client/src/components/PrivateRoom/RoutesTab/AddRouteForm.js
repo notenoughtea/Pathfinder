@@ -1,76 +1,104 @@
-import * as React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Box from '@material-ui/core/Box';
-import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { useDispatch, useSelector } from 'react-redux';
-import { addMyCard, axiosMyCards } from '../../../store/myCardsSlice';
+import  React, {useCallback} from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Box from "@material-ui/core/Box";
+import EmojiFlagsIcon from "@material-ui/icons/EmojiFlags";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { useDispatch, useSelector } from "react-redux";
+import { addMyCard, axiosMyCards } from "../../../store/myCardsSlice";
+import {useParams} from 'react-router-dom'
+import { useDropzone } from "react-dropzone";
 
-import axios from 'axios';
+import axios from "axios";
+import { Accordion, Card } from "react-bootstrap";
 
-export default function AddRouteForm(props) {
+const formData = new FormData
 
-  const {
-    lat,
-    lng,
-    handleClose,
-  } = props
-
-  
-  const dispatch = useDispatch()
-  const myCards = useSelector(state => state.myCards.myCards);
-
-  React.useEffect(() => {
-    console.log(myCards);
-    dispatch(axiosMyCards());
+function MyDropzone() {
+  const { id } = useParams();
+  const userId = localStorage.id
+  const onDrop = useCallback((acceptedFiles) => {
+    formData.append("333", acceptedFiles[0]);
+    formData.append("user_id", userId);
+    formData.append("routes_id", id);
   }, []);
 
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {isDragActive ? (
+        <Card >
+        <Card.Body>Кладите сюда</Card.Body>
+      </Card>
+      ) : (
+        <Card>
+          <Card.Body >Перетащите сюда или кликните для добавления фото</Card.Body>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+export default function AddRouteForm(props) {
+  const { lat, lng, handleClose } = props;
+
+  const dispatch = useDispatch();
+  const myCards = useSelector((state) => state.myCards.myCards);
+
+  React.useEffect(() => {
+    // console.log(myCards);
+    dispatch(axiosMyCards());
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    axios.post("/routes", {  
-      title: data.get('title'),
-      length: data.get('length'),
-      difficulty: data.get('difficulty'),
-      address: data.get('address'),
-      description: data.get('description'),
-      lat: lat,
-      lng: lng,
-      userId: localStorage.id
-    }).then((res) => {
-      dispatch(addMyCard({
-        title: data.get('title'),
-        length: data.get('length'),
-        difficulty: data.get('difficulty'),
-        address: data.get('address'),
-        description: data.get('description'),
-        lat: lat,
-        lng: lng,
-      }))
-    });
-    handleClose()
+    formData.append('title', data.get("title"))
+    formData.append('length', data.get("length"))
+    formData.append('difficulty', data.get("difficulty"))
+    formData.append('address', data.get("address"))
+    formData.append('description', data.get("description"))
+    formData.append('lat', lat)
+    formData.append('lng', lng)
+    formData.append('userId',localStorage.id)
+    axios
+      .post("/routes", formData)
+      .then((res) => {
+        console.log(res.data);
+        dispatch(
+          addMyCard({
+            title: data.get("title"),
+            length: data.get("length"),
+            difficulty: data.get("difficulty"),
+            address: data.get("address"),
+            description: data.get("description"),
+            lat: lat,
+            lng: lng,
+            url: res.url
+          })
+        );
+      });
+    handleClose();
   };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 2, bgcolor: 'success.main' }}>
+        <Avatar sx={{ m: 2, bgcolor: "success.main" }}>
           <EmojiFlagsIcon />
         </Avatar>
-        <br/>
+        {/* <br /> */}
         <Typography component="h1" variant="h5">
           Новый маршрут*
         </Typography>
@@ -120,7 +148,19 @@ export default function AddRouteForm(props) {
             type="text"
             id="address"
           />
-          <br/>
+          <MyDropzone />
+          {/* <Accordion
+            // onMouseMove={(e) => handler()}
+            style={{ marginBottom: "20px" }}
+          > 
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Добавить свое фото</Accordion.Header>
+              <Accordion.Body>
+                
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion> */}
+       
           {/* Установите маркер */}
           <TextField
             value={lng}
@@ -142,10 +182,23 @@ export default function AddRouteForm(props) {
             type="text"
             id="longitude"
           />
-          <Button type="submit" color="primary" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-           Добавить маршрут
+          <Button
+            type="submit"
+            color="primary"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Добавить маршрут
           </Button>
-          <Button type="click" onClick={handleClose} color="secondary" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+          <Button
+            type="click"
+            onClick={handleClose}
+            color="secondary"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
             Отмена
           </Button>
         </Box>

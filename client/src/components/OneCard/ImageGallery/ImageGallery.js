@@ -15,7 +15,12 @@ function MyDropzone() {
     formData.append("333", acceptedFiles[0]);
     formData.append("user_id", userId);
     formData.append("routes_id", id);
-    axios.post("/upload/image", formData);
+    try {
+      axios.post("/upload/image", formData);
+    } 
+    catch(error) {
+      console.log(error);
+    }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -50,11 +55,11 @@ export default function Gallery() {
 
   function handler(){
     setReload(prev => !prev)
-    console.log(reload);
+    // console.log(reload);
   }
   
   function deletePhoto(e) {
-    console.log(e);
+    // console.log(e);
   }
 
 

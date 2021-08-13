@@ -17,7 +17,9 @@ export default function Title({ card }) {
           backgroundSize: 'cover',
           height: `60vh`,
           borderRadius: '5px'
-        }}><div className={style.shadow}><Card.Title>{title}</Card.Title><Card.Text>{address}</Card.Text></div></div>
+        }}><div className={style.shadow}><Card.Title style={{
+          fontSize: '40px'
+        }}>{title}</Card.Title><Card.Text>{address}</Card.Text></div></div>
       </Card>
     </div>
   );

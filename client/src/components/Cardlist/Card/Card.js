@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 export default function CardRoutes({ item }) {
-  console.log(item);
+  // console.log(item);
   const classes = useStyles();
   let variant, text;
 
@@ -45,6 +45,7 @@ export default function CardRoutes({ item }) {
                 backgroundSize: "cover",
                 height: `35vh`,
                 borderRadius: "5px",
+                width: '325px'
               }}
             >
               <div>
@@ -79,7 +80,7 @@ export default function CardRoutes({ item }) {
                   readOnly
                 />
                 <Badge
-                  style={{ backgroundColor: `${variant}`, marginLeft: "20px" }}
+                  style={{ textAlign: 'center', backgroundColor: `${variant}`, marginLeft: "20px" }}
                 >
                   {text}
                 </Badge>
