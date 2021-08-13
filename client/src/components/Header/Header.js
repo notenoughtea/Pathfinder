@@ -110,9 +110,9 @@ export default function MenuAppBar() {
     <div  className={classes.root} id="header">
       <AppBar style={{backgroundColor: 'rgb(86, 139, 255)'}} position="static">
         <Toolbar>
-          <IconButton onClick={handleMenu} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          {/* <IconButton onClick={handleMenu} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" className={classes.title}>
             <Link className={classes.title} to='/'>
             Главная 
@@ -158,7 +158,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}><Link to="/lk"  color="inherit">Профиль</Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link style={{textDecoration: 'none'}} to="/lk"  color="inherit">Профиль</Link></MenuItem>
                 <MenuItem onClick={handleCloseLogout}>Выход</MenuItem>              
               </Menu>
             </div>

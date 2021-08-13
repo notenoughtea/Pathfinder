@@ -21,7 +21,7 @@ function OneCard() {
   const [one, setOne] = useState("");
   const cards = useSelector(state => state.cards.cards)
 
-  console.log(cards);
+  // console.log(cards);
 
   
   useEffect(() => {
@@ -44,10 +44,10 @@ function OneCard() {
       <TabPanel />
         </div>
         <div className={style.klop}>
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           // <Link to={`/card/${card.id}`}>
           
-        <div className={style.grob}>
+        <div key={i} className={style.grob}>
           <CardRoutes style={{
           paddingLeft: '205px',
           marginRight: 'auto',

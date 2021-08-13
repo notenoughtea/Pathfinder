@@ -18,7 +18,7 @@ export default function CommentCard() {
 
   return (
     <>
-    {comment.length &&
+    {comment.length ?
       comment.map((el, i) => {
         // console.log(el.user_id);
         return (
@@ -34,7 +34,9 @@ export default function CommentCard() {
               <Card.Text>{el.text}</Card.Text>
               </div>
           );
-        })}
+        }) :
+        <div></div>
+        }
         </>
   );
 }

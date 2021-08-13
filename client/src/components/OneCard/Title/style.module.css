@@ -9,9 +9,9 @@
   color: rgb(255, 255, 255);
 }
 .shadow {
-  margin-top: 50vh;
+  margin-top: 300px;
   margin-left: 5vw;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 .diff {
   display: flex;
