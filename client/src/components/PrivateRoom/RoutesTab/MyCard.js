@@ -39,13 +39,12 @@ export default function MyCard(props) {
     media: {
       background: "rgb(2,0,36)",
       display: "flex",
-      justifyContent: "center",
+      // justifyContent: "bottom",
       alignItems: 'space-between',
       backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 7%, rgba(22,13,13,0) 55%), url(${url})`,
       backgroundSize: 'cover',
       width: 300,
       height: 200,
-
     },
     media2: {
       fontFamily: "Georgia, serif",
@@ -65,6 +64,9 @@ export default function MyCard(props) {
     actions: {
       display: "flex",
       justifyContent: "center"
+    },
+    media90: {
+      marginTop: "50px"
     }
   });
 
@@ -105,7 +107,7 @@ export default function MyCard(props) {
       <Link to={`/card/${id}`} style={{ textDecoration: "none" }}>
           <CardContent className={classes.media}>
             <div className={classes.media2}>
-              <Typography>
+              <Typography className={classes.media90} >
                 {title}
               </Typography>
             </div>
