@@ -4,9 +4,9 @@ import axios from "axios";
 export const axiosComment = createAsyncThunk(
   'cards/axiosComment',
   async function(Data, {rejectWithValue}) {
-    const {data, id, userId} = Data
+    const {data, id, userId, rating} = Data
     try {
-      const response = await axios.post(`http://127.0.0.1:3001/upload/comment/${id}`, {data, userId});
+      const response = await axios.post(`http://127.0.0.1:3001/upload/comment/${id}`, {data, userId, rating});
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }

@@ -97,21 +97,23 @@ router
   } 
 })
 .post(async (req, res, next) => {
-  console.log(req.session);
-  console.log(req.body, req.params);
+  // console.log(req.session);
+  // console.log(req.body, req.params);
   const id = req.params.id
   const data = req.body.data
   const userId = req.body.userId
+  const rating = req.body.rating
   if(id && data && userId) {
     try {
       const comment = await Reviews.create(
         {
         user_id: userId,
         routes_id: id,
-        text: data
+        text: data,
+        rating
       }
       );
-      console.log(comment);
+      // console.log(comment);
       res.json(comment)
     } catch (error) {
       console.log(error);

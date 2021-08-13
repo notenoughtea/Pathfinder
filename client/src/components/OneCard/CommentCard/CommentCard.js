@@ -25,6 +25,12 @@ export default function CommentCard() {
             <div key={i}>         
               <hr />
               <UserMiniCard userId={el.user_id} />
+              <Rating
+                  name="half-rating-read"
+                  defaultValue={el.rating}
+                  precision={0.5}
+                  readOnly
+                />
               <Card.Text>{el.text}</Card.Text>
               </div>
           );

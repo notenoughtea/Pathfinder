@@ -35,7 +35,7 @@ router.get('/user/:id',async function(req, res, next) {
     const user = await User.findOne({where: {
       id
     }})
-    console.log(user);
+    // console.log(user);
     res.json(user)
   } catch (error) {
     res.send(500)
