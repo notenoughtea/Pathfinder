@@ -27,7 +27,7 @@ function OneCard() {
   useEffect(() => {
     axios.post('/one', { id })
     .then(res => setOne(res.data));
-  }, [])
+  }, [id])
 
   const { url, title, difficulty, rating, address, length, lng, lat } = one;
 
