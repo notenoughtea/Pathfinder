@@ -24,6 +24,7 @@ export default function UpdateProfileForm(props) {
 
 
   const {
+    setProfile,
     handleClose
   } = props
 
@@ -43,6 +44,7 @@ export default function UpdateProfileForm(props) {
       localStorage.setItem('firstName', res.data.firstName)
       localStorage.setItem('lastName', res.data.lastName)
       localStorage.setItem('email', res.data.email)
+      setProfile({firstName:res.data.firstName, lastName:res.data.lastName, email:res.data.email,})
     });
     handleClose()
   };

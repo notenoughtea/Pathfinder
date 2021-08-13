@@ -24,17 +24,11 @@ export default function MyCard(props) {
     lng
   } = props
 
-
   const useStyles = makeStyles({
     root: {
       width: 300,
-      height: 400,
+      height: 360,
       position: "relative",
-      minHeight: "100%",
-      height: 'auto',
-      height: "100%",
-      marginLeft: '70vh',
-      marginBottom: "3vh",
       transition: 'all 0.5s ease',
       '&:hover': {
         boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
@@ -45,10 +39,11 @@ export default function MyCard(props) {
       background: "rgb(2,0,36)",
       display: "flex",
       justifyContent: "center",
+      alignItems: 'space-between',
       backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 7%, rgba(22,13,13,0) 55%), url(${server}${url})`,
       backgroundSize: 'cover',
       width: 300,
-      height: 150,
+      height: 200,
 
     },
     media2: {
@@ -58,6 +53,13 @@ export default function MyCard(props) {
       displayDirection: "column",
       justifyContent: "center",
       marginTop: "36%"
+    },
+    media3: {
+      display: "flex",
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: '30%',
     },
     actions: {
       display: "flex",
@@ -105,10 +107,9 @@ export default function MyCard(props) {
             </div>
           </CardContent>
           </Link>
-          <CardContent>
+          <CardContent className={classes.media3}>
             <div
               style={{
-
                 display: "flex",
                 justifyContent: "space-between",
                 maxWidth: "95%",

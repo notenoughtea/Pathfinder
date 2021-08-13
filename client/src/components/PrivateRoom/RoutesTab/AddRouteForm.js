@@ -50,10 +50,11 @@ export default function AddRouteForm(props) {
   const dispatch = useDispatch();
   const myCards = useSelector((state) => state.myCards.myCards);
 
+
   React.useEffect(() => {
     // console.log(myCards);
     dispatch(axiosMyCards());
-  }, []);
+  }, [myCards.length]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
