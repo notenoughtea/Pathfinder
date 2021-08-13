@@ -2,12 +2,13 @@ import { Button, Card, CardContent, makeStyles, CardActionArea, CardActions, Typ
 import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteCard } from '../../../store/cardSlice';
+import { axiosCards, deleteCard } from '../../../store/cardSlice';
 import UpdateRouteModal from './UpdateRouteModal';
 import { server } from "../../../constants";
 import { Link } from "react-router-dom";
 import { Rating } from "@material-ui/lab";
 import { Badge } from "react-bootstrap";
+import { axiosMyCards } from '../../../store/myCardsSlice';
 
 export default function MyCard(props) {
 
@@ -91,6 +92,7 @@ export default function MyCard(props) {
       .then((res) => {
         console.log(id);
         dispatch(deleteCard({ id: id }))
+        dispatch(axiosMyCards())
       });
 
   }

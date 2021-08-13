@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginTop: "100px"
   },
-  // form: {
-  //   position: "absolute",
-  //   width: "300px"
-  // }
+  form: {
+    position: "absolute",
+    height: "700px"
+  }
 }));
 
 export default function AddRouteModal() {
