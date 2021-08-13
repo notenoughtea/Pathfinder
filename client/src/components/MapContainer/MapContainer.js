@@ -111,7 +111,7 @@ function MapContainer() {
         {open && (
         <InfoBox
         onLoad={onLoad}
-        options={options}
+        options={infoBoxOptions}
         position={cords}
         
         >

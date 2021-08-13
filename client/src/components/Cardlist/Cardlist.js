@@ -61,7 +61,6 @@ export default function Cardlist() {
         }}>
         </div>}
       </div>
-      <div className={classes.note}><h2>Дорогу осилит идущий</h2></div>
       <Carousel className="carouselContainer" responsive={responsive}>
         {cards.map((item) => (
           <CardRoutes item={item}/>

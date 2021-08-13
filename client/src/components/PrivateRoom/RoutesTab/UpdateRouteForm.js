@@ -8,7 +8,6 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
-import { axiosCards, updateCard } from '../../../store/cardSlice';
 import axios from 'axios';
 import { axiosMyCards, updateMyCard } from '../../../store/myCardsSlice';
 
