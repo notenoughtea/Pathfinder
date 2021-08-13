@@ -11,6 +11,8 @@ import SignUp from "./components/Signup/Signup";
 import MenuAppBar from './components/Header/Header';
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
+import FindPath from './components/OneCard/FindPath/FindPath';
+import { axiosMyCards } from './store/myCardsSlice';
 
 function App() {
 
@@ -18,6 +20,11 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(axiosCards());
+  }, []);
+  
+  const myCards = useSelector(state => state.myCards);
+  React.useEffect(() => {
+    dispatch(axiosMyCards());
   }, []);
 
   return (

@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MyCard from './MyCard';
 import AddRouteModal from './AddRouteModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { axiosMyCards } from '../../../store/myCardsSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,12 +13,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RoutesContainer() {
+
+  const dispatch = useDispatch()
+  const myCards = useSelector(state => state.myCards.myCards);
+  
+  console.log("----->", myCards);
+  React.useEffect(() => {
+    dispatch(axiosMyCards());
+  }, []);
+
+
   const cards = useSelector(state => state.cards.cards);
   const classes = useStyles();
   return (
     <div className={classes.root}>
         <AddRouteModal/>
-      {cards.map((card) => <MyCard lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
+      {myCards.map((card) => <MyCard lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
     </div>
   );
 }

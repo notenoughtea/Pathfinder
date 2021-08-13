@@ -33,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginTop: "100px"
   },
-  buttonedit: {
-    width: 120,
-    fontSize: "10px",
-    color: "white",
-    backgroundColor: "rgb(230, 184, 0)",
-    textShadow: "0px 1px 0px #8f8a64",
-  }
+  // buttonedit: {
+  //   width: 120,
+  //   fontSize: "10px",
+  //   color: "white",
+  //   backgroundColor: "rgb(230, 184, 0)",
+  //   textShadow: "0px 1px 0px #8f8a64",
+  // }
 }));
 
 export default function UpdateRouteModal(props) {
@@ -71,7 +71,7 @@ export default function UpdateRouteModal(props) {
 
   return (
     <div>
-      <Button className={classes.buttonedit} onClick={handleOpen}>Редактировать</Button>
+      <Button variant="outlined" color="primary" size="small" onClick={handleOpen}>Редактировать</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

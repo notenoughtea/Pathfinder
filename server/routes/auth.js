@@ -16,6 +16,10 @@ router.post('/signup', async function(req, res, next) {
       } else {
         const hash = await bcrypt.hash(password, 8)
         const user = await User.create({firstName, lastName, email, password: hash})
+        req.session.user = {
+          id: user.id,
+          email: user.email
+        };
        return res.json({id: user.id, firstName, lastName, email})
       }
     } catch (error) {
@@ -37,6 +41,11 @@ router.post('/signin', async function(req, res, next) {
       } else if (findUser) {
         if(await bcrypt.compare(password, findUser.password)) {
           const {id, firstName, lastName, email} = findUser
+          req.session.user = {
+            id,
+            email
+          };
+          
           return res.json({id, firstName, lastName, email})
         } else res.json({error: "Неверный пароль"})
       }

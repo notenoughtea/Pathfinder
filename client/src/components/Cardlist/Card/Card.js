@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import "react-multi-carousel/lib/styles.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import { server } from "../../constants";
+import { server } from "../../../constants";
 import { Rating } from "@material-ui/lab";
 import { Badge } from "react-bootstrap";
 
@@ -15,14 +15,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardRoutes({cardProps}) {
+export default function CardRoutes({ item }) {
   const classes = useStyles();
   let variant, text;
 
-  if (cardProps.difficulty < 4) {
+  if (item.difficulty < 4) {
     variant = "green";
     text = "eazy";
-  } else if (cardProps.difficulty < 7) {
+  } else if (item.difficulty < 7) {
     variant = "lightblue";
     text = "средний";
   } else {
@@ -31,15 +31,15 @@ export default function CardRoutes({cardProps}) {
   }
 
   return (
-    <div className="cardOne" key={cardProps.id}>
+    <div className="cardOne" key={item.id}>
       <Card className={classes.root}>
-        <Link to={`/card/${cardProps.id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/card/${item.id}`} style={{ textDecoration: "none" }}>
           <CardActionArea>
             <div
               style={{
                 background: "rgb(2,0,36)",
                 display: "flex",
-                backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${cardProps.url})`,
+                backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${item.url})`,
                 backgroundSize: "cover",
                 height: `35vh`,
                 borderRadius: "5px",
@@ -48,7 +48,7 @@ export default function CardRoutes({cardProps}) {
               <div>
                 <Typography
                   gutterBottom
-                  variant="h6"
+                  variant="h5"
                   component="h2"
                   style={{
                     color: "white",
@@ -56,7 +56,7 @@ export default function CardRoutes({cardProps}) {
                     marginLeft: "1vw",
                   }}
                 >
-                  {cardProps.title}
+                  {item.title}
                 </Typography>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function CardRoutes({cardProps}) {
               >
                 <Rating
                   name="half-rating-read"
-                  defaultValue={cardProps.rating}
+                  defaultValue={item.rating}
                   precision={0.5}
                   readOnly
                 />
@@ -89,4 +89,3 @@ export default function CardRoutes({cardProps}) {
     </div>
   );
 }
-

@@ -56,7 +56,7 @@ app.use('/', routesRouter);
 app.use('/auth', authRouter);
 app.use('/user', userRouter)
 app.use('/upload', uploadRouter);
-// app.use('/users', usersRouter);
+// app.use('/users', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

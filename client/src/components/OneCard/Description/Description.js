@@ -14,8 +14,7 @@ import { Rating } from "@material-ui/lab";
 export default function Description({data}) {
 
   const { url, title, difficulty, rating, address, length, lng, lat, description } = data;
-
-  let variant, text
+  let variant, text, rat = rating
 
   if(difficulty < 4) {
     variant = 'green'
@@ -32,7 +31,7 @@ export default function Description({data}) {
     <Card style={{border: 'none'}} body>{description}
       <hr></hr>
       <div className={style.length}>
-      <Card.Subtitle className="mb-2 text-muted">Длинна</Card.Subtitle>
+      <Card.Subtitle className="mb-2 text-muted">Длина</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Рейтинг</Card.Subtitle>
       <Card.Subtitle className="mb-2 text-muted">Сложность</Card.Subtitle>
       </div>
