@@ -57,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  wrapper: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
 }));
 
 export default function RoomTabs() {
@@ -73,20 +77,18 @@ export default function RoomTabs() {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Профиль" {...a11yProps(0)} />
           <Tab label="Мои маршруты" {...a11yProps(1)} />
-          <Tab label="Избранное" {...a11yProps(2)} />
-          <Tab label="Фото" {...a11yProps(3)} />
+          <Tab label="Фото" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel className={classes.profile} value={value} index={0}>
         <Profile/>
       </TabPanel>
-      <TabPanel value={value} index={1}>
-      <RoutesContainer/>
+      <TabPanel className={classes.wrapper} value={value} index={1}>
+      <RoutesContainer />
       </TabPanel>
       <TabPanel value={value} index={2}>
       </TabPanel>
-      <TabPanel value={value} index={3}>
-      </TabPanel>
+
     </div>
   );
 }

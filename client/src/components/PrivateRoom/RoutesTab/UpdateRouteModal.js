@@ -86,7 +86,7 @@ export default function UpdateRouteModal(props) {
       >
         <Fade in={open}>
         <div className={classes.paper}>
-        <UpdateRouteForm handleClose={handleClose} lat={lat} lng={lng} id={id} key={id} lat={lat} lng={lng} title={title} difficulty={difficulty} rating={rating} address={address} length={length} description={description}/>
+        <UpdateRouteForm open={open} handleClose={handleClose} lat={lat} lng={lng} id={id} key={id} lat={lat} lng={lng} title={title} difficulty={difficulty} rating={rating} address={address} length={length} description={description}/>
         <MiniMap setLat={setLat} setLng={setLng}/>
           </div>
         </Fade>

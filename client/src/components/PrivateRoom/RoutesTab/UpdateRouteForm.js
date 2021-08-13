@@ -23,22 +23,18 @@ export default function UpdateRouteForm(props) {
     lat,
     lng,
     handleClose,
+    open
   } = props
-
 
   const dispatch = useDispatch()
   const myCards = useSelector(state => state.myCards.myCards);
 
-  // React.useEffect(() => {
-  //   dispatch(axiosMyCards());
-  // }, [myCards]);
-
+  
   const [titleState, setTitle] = React.useState(title);
   const [difficultyState, setDifficulty] = React.useState(difficulty);
   const [addressState, setAddress] = React.useState(address);
   const [lengthState, setLength] = React.useState(length);
   const [descriptionState, setDescription] = React.useState(description);
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,7 +49,6 @@ export default function UpdateRouteForm(props) {
       lat: lat,
       lng: lng,
     }).then((res) => {
-      console.log("------>", res.data);
       dispatch(updateMyCard(myCards, {
         title: res.data.title,
         length: res.data.length,
@@ -61,12 +56,14 @@ export default function UpdateRouteForm(props) {
         address: res.data.address,
         description: res.data.description,
         lat: res.data.lat,
-        lng: res.data.lng
+        lng: res.data.lng,
+        id: id,
       }))
+      dispatch(axiosMyCards());
     });
     handleClose()
   };
-
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

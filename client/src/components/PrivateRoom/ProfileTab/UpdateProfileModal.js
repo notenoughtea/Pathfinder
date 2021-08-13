@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UpdateProfileModal() {
+export default function UpdateProfileModal(props) {
+  const {setProfile} = props
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -52,9 +53,7 @@ export default function UpdateProfileModal() {
       >
         <Fade in={open}>
         <div className={classes.paper}>
-        <UpdateProfileForm handleClose={handleClose}/>
-        {/* <AddRouteForm handleClose={handleClose} lat={lat} lng={lng}/>
-        <MiniMap setLat={setLat} setLng={setLng}/> */}
+        <UpdateProfileForm setProfile={setProfile} handleClose={handleClose}/>
           </div>
         </Fade>
       </Modal>
