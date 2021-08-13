@@ -3,6 +3,7 @@ import cardReducer from './cardSlice';
 import signinReducer from './signinSlice'
 import galleryReducer from './gallerySlice'
 import myCardsSliceReducer from './myCardsSlice'
+import commentReducer from './commentsSlice';
 
 export default configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export default configureStore({
     // signup: signupReducer,
     signin: signinReducer,
     gallery: galleryReducer,
-    myCards: myCardsSliceReducer
+    myCards: myCardsSliceReducer,
+    comments: commentReducer
   },
 });
