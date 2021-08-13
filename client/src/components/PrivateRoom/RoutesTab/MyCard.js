@@ -40,7 +40,7 @@ export default function MyCard(props) {
       display: "flex",
       justifyContent: "center",
       alignItems: 'space-between',
-      backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 7%, rgba(22,13,13,0) 55%), url(${server}${url})`,
+      backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 7%, rgba(22,13,13,0) 55%), url(${url})`,
       backgroundSize: 'cover',
       width: 300,
       height: 200,
@@ -96,7 +96,9 @@ export default function MyCard(props) {
   }
   return (
 
-    <Card id={id} className={classes.root}>
+    <Card style={{
+      margin: '10px'
+    }} id={id} className={classes.root}>
         <CardActionArea>
       <Link to={`/card/${id}`} style={{ textDecoration: "none" }}>
           <CardContent className={classes.media}>

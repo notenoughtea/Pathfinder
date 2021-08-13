@@ -43,7 +43,7 @@ export default function RoutesContainer() {
   return (
     <div className={classes.root}>
         <AddRouteModal className={classes.rmodal}/>
-      {myCards.map((card) => <MyCard className={classes.card} lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
+      {myCards.map((card) => <MyCard className={classes.card} url={card.url} lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
     </div>
   );
 }
