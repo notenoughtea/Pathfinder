@@ -7,7 +7,7 @@ import myCardsSliceReducer from './myCardsSlice'
 export default configureStore({
   reducer: {
     cards: cardReducer,
-    signup: signupReducer,
+    // signup: signupReducer,
     signin: signinReducer,
     gallery: galleryReducer,
     myCards: myCardsSliceReducer
