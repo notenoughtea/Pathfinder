@@ -14,9 +14,6 @@ import { Rating } from "@material-ui/lab";
 export default function Description({data}) {
 
   const { url, title, difficulty, rating, address, length, lng, lat, description } = data;
-
-  console.log(typeof(rating));
-
   let variant, text, rat = rating
 
   if(difficulty < 4) {

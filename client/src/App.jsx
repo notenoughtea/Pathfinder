@@ -12,6 +12,7 @@ import MenuAppBar from './components/Header/Header';
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
 import FindPath from './components/OneCard/FindPath/FindPath';
+import { axiosMyCards } from './store/myCardsSlice';
 
 function App() {
 
@@ -20,12 +21,16 @@ function App() {
   useEffect(() => {
     dispatch(axiosCards());
   }, []);
+  
+  const myCards = useSelector(state => state.myCards);
+  React.useEffect(() => {
+    dispatch(axiosMyCards());
+  }, []);
 
   return (
     <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
       <Router>
         <MenuAppBar />
-        
         <Switch>
           <Route exact path="/">
             <MainGreeting />

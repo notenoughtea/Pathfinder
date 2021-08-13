@@ -6,12 +6,10 @@ export const axiosCards = createAsyncThunk(
   'cards/axiosCards',
   async function(_, {rejectWithValue}) {
     try {
-      console.log('axios');
       const response = await axios('http://127.0.0.1:3001/routes');
       if (response.statusText !== 'OK') {
         throw new Error('Server Error!')
       }
-      console.log(response.data);
       return response.data;// пуляем Routes.findAll() с бэка
     } catch (error) {
       return rejectWithValue(error.message)
@@ -41,7 +39,6 @@ const cardSlice = createSlice({
       const {
         id
       } = action.payload
-      console.log("--->", action.payload);
          const index = (state.cards).indexOf(state.cards.find((e)=>(e.id===id)));
           state.cards.splice(index, 1)
       },

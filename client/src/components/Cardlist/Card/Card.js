@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 });
 
 export default function CardRoutes({ item }) {
+  console.log(item);
   const classes = useStyles();
   let variant, text;
 
@@ -35,6 +36,7 @@ export default function CardRoutes({ item }) {
       <Card className={classes.root}>
         <Link to={`/card/${item.id}`} style={{ textDecoration: "none" }}>
           <CardActionArea>
+            
             <div
               style={{
                 background: "rgb(2,0,36)",
@@ -82,9 +84,6 @@ export default function CardRoutes({ item }) {
                   {text}
                 </Badge>
               </div>
-              <Typography variant="body2" color="textSecondary" component="p">
-                &nbsp;{item.description}
-              </Typography>
             </CardContent>
           </CardActionArea>
         </Link>

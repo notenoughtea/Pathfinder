@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Gallery from '../ImageGallery/ImageGallery';
-import CommentBox from '../Comments/Comments';
+import CommentBox from '../Comments/CommentBox';
 import CommentCard from '../CommentCard/CommentCard';
 
 function TabPanel(props) {

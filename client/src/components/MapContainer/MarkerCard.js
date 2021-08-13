@@ -1,75 +1,92 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import "react-multi-carousel/lib/styles.css";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { server } from "../../constants";
+import { Rating } from "@material-ui/lab";
+import { Badge } from "react-bootstrap";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-}));
+});
 
-export default function MarkerCard(props) {
-
-  const {
-    title,
-    difficulty,
-    rating,
-    address,
-    length,
-    description
-  } = props
-
-  console.log(`${title}`);
+export default function CardRoutes({cardProps}) {
   const classes = useStyles();
-  return (
+  let variant, text;
 
-    <Card className={classes.root}>
-      <CardHeader
-        title={title}
-        subheader={address}
-      />
-      <CardMedia
-        className={classes.media}
-        image="https://picsum.photos/500/800"
-        title={title}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        description: {description}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       difficulty: {difficulty}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       rating: {rating}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-       length: {length}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+  if (cardProps.difficulty < 4) {
+    variant = "green";
+    text = "eazy";
+  } else if (cardProps.difficulty < 7) {
+    variant = "lightblue";
+    text = "средний";
+  } else {
+    variant = "red";
+    text = "тяжелый";
+  }
+
+  return (
+    <div className="cardOne" key={cardProps.id}>
+      <Card className={classes.root}>
+        <Link to={`/card/${cardProps.id}`} style={{ textDecoration: "none" }}>
+          <CardActionArea>
+            <div
+              style={{
+                background: "rgb(2,0,36)",
+                display: "flex",
+                backgroundImage: `linear-gradient(0deg, rgba(2,0,36,1) 2%, rgba(22,13,13,0) 35%), url(${server}${cardProps.url})`,
+                backgroundSize: "cover",
+                height: `35vh`,
+                borderRadius: "5px",
+              }}
+            >
+              <div>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h2"
+                  style={{
+                    color: "white",
+                    marginTop: "30vh",
+                    marginLeft: "1vw",
+                  }}
+                >
+                  {cardProps.title}
+                </Typography>
+              </div>
+            </div>
+            <CardContent>
+              <div
+                style={{
+                  
+                  display: "flex",
+                  justifyContent: "space-between",
+                  maxWidth: "95%",
+                  padding: '10px',
+                }}
+              >
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={cardProps.rating}
+                  precision={0.5}
+                  readOnly
+                />
+                <Badge
+                  style={{ backgroundColor: `${variant}`, marginLeft: "20px" }}
+                >
+                  {text}
+                </Badge>
+              </div>
+            </CardContent>
+          </CardActionArea>
+        </Link>
+      </Card>
+    </div>
   );
 }
+

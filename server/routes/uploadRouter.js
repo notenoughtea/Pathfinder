@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Routes } = require('../db/models');
 const multer = require('multer')
-const { Photos } = require('../db/models')
+const { Photos , Reviews} = require('../db/models')
 const { v4: uuidv4 } = require('uuid');
 
 const DIR = './public/img';
@@ -76,13 +76,60 @@ router
   }
 })
 
-router.post('/one', async (req,res) => {
-  const { id } = req.body;
-  const result = await Routes.findOne({where:{id: id}})
-  res.status(200).json(result)
+
+router
+.route('/comment/:id')
+.get(async (req, res, next) => {
+  const id = req.params.id
+  try {
+    const comment = await Reviews.findAll({
+      where: {
+      routes_id: id
+    },
+    order: [
+      ['id', 'DESC'],
+  ],
+  
+  })
+    res.json(comment)
+  } catch (error) {
+    console.log(error);
+  } 
 })
-router.post('/background', (req,res) => {
-  res.status(200).send({url: '/img/IMG_0507.png'})
+.post(async (req, res, next) => {
+  // console.log(req.session);
+  // console.log(req.body, req.params);
+  const id = req.params.id
+  const data = req.body.data
+  const userId = req.body.userId
+  const rating = req.body.rating
+  if(id && data && userId) {
+    try {
+      const comment = await Reviews.create(
+        {
+        user_id: userId,
+        routes_id: id,
+        text: data,
+        rating
+      }
+      );
+      // console.log(comment);
+      res.json(comment)
+    } catch (error) {
+      console.log(error);
+    } 
+  }
 })
+router
+.route('/comment')
+
+// router.post('/one', async (req,res) => {
+//   const { id } = req.body;
+//   const result = await Routes.findOne({where:{id: id}})
+//   res.status(200).json(result)
+// })
+// router.post('/background', (req,res) => {
+//   res.status(200).send({url: '/img/IMG_0507.png'})
+// })
 
 module.exports = router;

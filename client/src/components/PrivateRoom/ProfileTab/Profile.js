@@ -40,11 +40,11 @@ export default function Profile() {
       />
       <CardContent>
         <h3 >
-          {firstName}
+          Имя: {firstName}
         </h3>
         <br/>
         <h5 >
-          {lastName}
+          Фамилия: {lastName}
           </h5>
           <br/>
         <h5 >

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-scroll';
 import Timelapse from '../video/timelapse.mp4';
 import FindPath from '../OneCard/FindPath/FindPath';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -17,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleTooltips() {
   const classes = useStyles();
+
+  const [bg, setBg] = useState(null);
+  useEffect(() => {
+    axios.post('/background')
+      .then(res => {
+        setBg(res.data);
+      console.log(res.data); })
+      
+  }, [])
 
   return (
     <div className="mainContainer">

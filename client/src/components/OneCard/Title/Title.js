@@ -5,8 +5,6 @@ import { server } from "../../../constants";
 
 export default function Title({ card }) {
 
-  console.log(card);
-
   const { url, title, difficulty, rating, address } = card;
 
   return (
