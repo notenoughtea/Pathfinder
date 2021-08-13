@@ -127,16 +127,6 @@ function MapContainer() {
 
   return isLoaded ? (
     <div>
-      {/* <div>
-        <div id="mapContainer" style={{
-             height: '250px',
-             backgroundImage: `url(http://localhost:3001/img/bg_2.jpg)`,
-             backgroundPosition: 'center',
-             backgroundSize: 'cover',
-             backgroundRepeat: 'no-repeat'
-           }}>
-        </div>
-      </div> */}
     <div>
       <GoogleMap className={"mapcontainer"} 
         mapContainerStyle={containerStyle}

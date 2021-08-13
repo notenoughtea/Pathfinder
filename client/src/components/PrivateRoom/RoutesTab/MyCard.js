@@ -96,7 +96,6 @@ export default function MyCard(props) {
         dispatch(deleteCard({ id: id }))
         dispatch(axiosMyCards())
       });
-
   }
   return (
 
