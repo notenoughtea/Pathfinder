@@ -54,7 +54,7 @@ const INITIAL_HEIGHT = 46;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(axiosComment({data:commentValue, id, userId: localStorage.id}))
+    dispatch(axiosComment({data:commentValue, id, userId: localStorage.id, rating: value}))
     setCommentValue("");
     setIsExpanded(false);
   };
@@ -85,6 +85,7 @@ const INITIAL_HEIGHT = 46;
         </div>
         <label htmlFor="comment">Оставьте рецензию на маршрут</label>
         <textarea
+          style={{border: 'none'}}
           ref={textRef}
           onClick={onExpand}
           onFocus={onExpand}
@@ -97,10 +98,6 @@ const INITIAL_HEIGHT = 46;
         />
         
         <div className="actions">
-        
-          <button type="button" className="cancel" onClick={onClose}>
-            Отмена
-          </button>
           <Rating
           name="simple-controlled"
           value={value}
@@ -108,7 +105,14 @@ const INITIAL_HEIGHT = 46;
             setValue(newValue);
           }}
         />
-          <button type="submit"  disabled={commentValue.length < 1}>
+        
+          <button type="button" className="cancel" onClick={onClose}>
+            Отмена
+          </button>
+          <button type="submit" style={{
+            backgroundColor: 'green',
+            color: 'white',
+        }} disabled={commentValue.length < 1}>
             Отправить
           </button>
         </div>
