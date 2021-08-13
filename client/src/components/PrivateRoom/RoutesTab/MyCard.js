@@ -90,7 +90,6 @@ export default function MyCard(props) {
         console.log(id);
         dispatch(deleteCard({ id: id }))
       });
-
   }
   return (
 

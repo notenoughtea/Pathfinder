@@ -42,7 +42,7 @@ export default function Cardlist() {
   const classes = useStyles();
   const cards = useSelector(state => state.cards.cards);
 
-  console.log(cards);
+  // console.log(cards);
 
   const [bg, setBg] = useState(null);
   useEffect(() => {
