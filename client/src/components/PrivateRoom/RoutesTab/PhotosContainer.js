@@ -49,8 +49,6 @@ export default function PhotosContainer() {
 
   return (
     <div className={classes.root}>
-      {console.log(123)}
-      fsorkgposjrgposdrdrgdrg
       <ImageList rowHeight={180} className={classes.imageList}>
         <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Photo:</ListSubheader>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    overflow: 'scroll',
+    overflow: 'hidden',
     flexGrow: 1,
     padding: 10,
     backgroundColor: theme.palette.background.paper,
@@ -41,7 +41,7 @@ export default function RoutesContainer() {
 
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div  className={classes.root}>
         <AddRouteModal className={classes.rmodal}/>
       {myCards.map((card) => <MyCard className={classes.card} url={card.url} lat={card.lat} lng={card.lng} id={card.id} key={card.id} title={card.title} difficulty={card.difficulty} rating={card.rating} address={card.address} length={card.length} description={card.description}/>)}
     </div>

@@ -55,8 +55,11 @@ export default function AddRouteModal() {
   const [lng, setLng] = React.useState(0);
 
   return (
-    <div>
-      <Button color="primary" variant="contained" onClick={handleOpen} style={{marginLeft: '77vh', marginBottom: '20px', }}>Добавить маршрут</Button>
+    <div style={{
+      overflow: "hidden",
+    overflowY: "hidden",
+    }}>
+      <Button color="primary" variant="contained" onClick={handleOpen} style={{marginLeft: '95vh', marginBottom: '20px', }}>Добавить маршрут</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

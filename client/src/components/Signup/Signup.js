@@ -27,9 +27,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      {/* <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '} */}
+      <Link color="inherit" href="https://material-ui.com/">
+        Elbrus Bootcamp
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -84,7 +84,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Регистрация 
         </Typography>
         <form className={classes.form} onSubmit={e => {
           e.preventDefault()
@@ -156,12 +156,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Зарегестрироваться
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Link to="/signin" variant="body2">
-                Already have an account? Sign in
+                Есть аккаунт? Войти
               </Link>
             </Grid>
           </Grid>

@@ -50,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    overflow: "hidden",
+    overflow: "hidden",
   },
   profile: {
     display: 'flex',
@@ -60,7 +62,8 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    
   }
 }));
 
@@ -88,9 +91,6 @@ export default function RoomTabs() {
       <RoutesContainer />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        dawdaw
         <PhotosContainer />
       </TabPanel>
     </div>

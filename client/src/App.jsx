@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{backgroundColor: 'rgba(0, 0, 0, 0.089)'}}>
+    <div>
       <Router>
         <MenuAppBar />
         <Switch>

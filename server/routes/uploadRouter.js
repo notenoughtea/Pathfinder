@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     }
 });
 
-var upload = multer({
+const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
@@ -32,10 +32,7 @@ var upload = multer({
 router
 .route('/image')
 .post(upload.single('333'), async (req, res) => {
-  // console.log( req.file);
-  // console.log( req.body.user_id);
   const url = req.protocol + '://' + req.get('host')
-  // console.log(url);
   const {user_id, routes_id } = req.body
   try {
     if(user_id && routes_id && req.file) {
