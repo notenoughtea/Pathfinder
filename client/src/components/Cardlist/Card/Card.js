@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 });
 
 export default function CardRoutes({ item }) {
-  // console.log(item);
   const classes = useStyles();
   let variant, text;
 
@@ -36,7 +35,6 @@ export default function CardRoutes({ item }) {
       <Card className={classes.root}>
         <Link to={`/card/${item.id}`} style={{ textDecoration: "none" }}>
           <CardActionArea>
-            
             <div
               style={{
                 background: "rgb(2,0,36)",
@@ -45,7 +43,7 @@ export default function CardRoutes({ item }) {
                 backgroundSize: "cover",
                 height: `35vh`,
                 borderRadius: "5px",
-                width: '325px'
+                width: "325px",
               }}
             >
               <div>
@@ -66,11 +64,10 @@ export default function CardRoutes({ item }) {
             <CardContent>
               <div
                 style={{
-                  
                   display: "flex",
                   justifyContent: "space-between",
                   maxWidth: "95%",
-                  padding: '10px',
+                  padding: "10px",
                 }}
               >
                 <Rating
@@ -80,7 +77,11 @@ export default function CardRoutes({ item }) {
                   readOnly
                 />
                 <Badge
-                  style={{ textAlign: 'center', backgroundColor: `${variant}`, marginLeft: "20px" }}
+                  style={{
+                    textAlign: "center",
+                    backgroundColor: `${variant}`,
+                    marginLeft: "20px",
+                  }}
                 >
                   {text}
                 </Badge>

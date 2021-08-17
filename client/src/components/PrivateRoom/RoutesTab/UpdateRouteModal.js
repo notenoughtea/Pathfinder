@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
-    // padding: theme.spacing(2, 4),
     position: "relative",
     width: "1500px",
     height: "800px",
@@ -33,13 +32,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     marginTop: "100px"
   },
-  // buttonedit: {
-  //   width: 120,
-  //   fontSize: "10px",
-  //   color: "white",
-  //   backgroundColor: "rgb(230, 184, 0)",
-  //   textShadow: "0px 1px 0px #8f8a64",
-  // }
 }));
 
 export default function UpdateRouteModal(props) {

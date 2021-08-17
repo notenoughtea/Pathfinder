@@ -1,4 +1,4 @@
-import  React, {useCallback} from "react";
+import React, { useCallback } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,17 +9,17 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { addMyCard, axiosMyCards } from "../../../store/myCardsSlice";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
 import axios from "axios";
 import { Accordion, Card } from "react-bootstrap";
 
-const formData = new FormData
+const formData = new FormData();
 
 function MyDropzone() {
   const { id } = useParams();
-  const userId = localStorage.id
+  const userId = localStorage.id;
   const onDrop = useCallback((acceptedFiles) => {
     formData.append("333", acceptedFiles[0]);
     formData.append("user_id", userId);
@@ -32,12 +32,14 @@ function MyDropzone() {
     <div {...getRootProps()}>
       <input {...getInputProps()} />
       {isDragActive ? (
-        <Card >
-        <Card.Body>Кладите сюда</Card.Body>
-      </Card>
+        <Card>
+          <Card.Body>Кладите сюда</Card.Body>
+        </Card>
       ) : (
         <Card>
-          <Card.Body >Перетащите сюда или кликните для добавления фото</Card.Body>
+          <Card.Body>
+            Перетащите сюда или кликните для добавления фото
+          </Card.Body>
         </Card>
       )}
     </div>
@@ -50,40 +52,35 @@ export default function AddRouteForm(props) {
   const dispatch = useDispatch();
   const myCards = useSelector((state) => state.myCards.myCards);
 
-
   React.useEffect(() => {
-    // console.log(myCards);
     dispatch(axiosMyCards());
   }, [myCards.length]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    formData.append('title', data.get("title"))
-    formData.append('length', data.get("length"))
-    formData.append('difficulty', data.get("difficulty"))
-    formData.append('address', data.get("address"))
-    formData.append('description', data.get("description"))
-    formData.append('lat', lat)
-    formData.append('lng', lng)
-    formData.append('userId',localStorage.id)
-    axios
-      .post("/routes", formData)
-      .then((res) => {
-        console.log(res.data);
-        dispatch(
-          addMyCard({
-            title: data.get("title"),
-            length: data.get("length"),
-            difficulty: data.get("difficulty"),
-            address: data.get("address"),
-            description: data.get("description"),
-            lat: lat,
-            lng: lng,
-            url: res.url
-          })
-        );
-      });
+    formData.append("title", data.get("title"));
+    formData.append("length", data.get("length"));
+    formData.append("difficulty", data.get("difficulty"));
+    formData.append("address", data.get("address"));
+    formData.append("description", data.get("description"));
+    formData.append("lat", lat);
+    formData.append("lng", lng);
+    formData.append("userId", localStorage.id);
+    axios.post("/routes", formData).then((res) => {
+      dispatch(
+        addMyCard({
+          title: data.get("title"),
+          length: data.get("length"),
+          difficulty: data.get("difficulty"),
+          address: data.get("address"),
+          description: data.get("description"),
+          lat: lat,
+          lng: lng,
+          url: res.url,
+        })
+      );
+    });
     handleClose();
   };
   return (
@@ -150,19 +147,6 @@ export default function AddRouteForm(props) {
             id="address"
           />
           <MyDropzone />
-          {/* <Accordion
-            // onMouseMove={(e) => handler()}
-            style={{ marginBottom: "20px" }}
-          > 
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Добавить свое фото</Accordion.Header>
-              <Accordion.Body>
-                
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion> */}
-       
-          {/* Установите маркер */}
           <TextField
             value={lng}
             margin="normal"

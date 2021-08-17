@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const { Routes, Reference } = require("../db/models");
 const multer = require("multer");
 const { Photos, Reviews } = require("../db/models");
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   },
 });
 
-var upload = multer({
+const upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
     if (
@@ -40,13 +40,8 @@ router
     res.json(routes);
   })
   .post(upload.single("333"), async (req, res) => {
-    console.log(123);
-    // console.log(req.file);
     const url = req.protocol + "://" + req.get("host");
-    // console.log(req.body);
     const { userId } = req.body;
-    // req.body.url = url + '/img/' + req.file.filename
-    console.log(req.body);
     try {
       if (req.body) {
         const newRoute = await Routes.create({

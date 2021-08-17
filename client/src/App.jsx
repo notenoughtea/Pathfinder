@@ -7,11 +7,10 @@ import Cardlist from './components/Cardlist/Cardlist';
 import OneCard from './components/OneCard/OneCard';
 import SignIn from "./components/Signin/Signin";
 import SignUp from "./components/Signup/Signup";
- import MapContainer from "./components/MapContainer/MapContainer"
+import MapContainer from "./components/MapContainer/MapContainer"
 import MenuAppBar from './components/Header/Header';
 import MainGreeting from "./components/MainGreeting/MainGreeting";
 import PrivateRoom from "./components/PrivateRoom/PrivateRoom";
-import FindPath from './components/OneCard/FindPath/FindPath';
 import { axiosMyCards } from './store/myCardsSlice';
 
 function App() {

@@ -3,9 +3,9 @@ import cn from "classnames";
 import useDynamicHeightField from "./use";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import {Rating} from '@material-ui/lab'
+import { Rating } from "@material-ui/lab";
 import { axiosAllComment, axiosComment } from "../../../store/commentsSlice";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 const INITIAL_HEIGHT = 46;
 
@@ -13,28 +13,26 @@ const INITIAL_HEIGHT = 46;
  * Read the blog post here:
  * https://letsbuildui.dev/articles/how-to-build-an-expandable-comment-box
  */
- function CommentBox() {
+function CommentBox() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [commentValue, setCommentValue] = useState("");
   const [value, setValue] = useState(5);
   const user = {
     firstName: localStorage.firstName,
     lastName: localStorage.lastName,
-  }
+  };
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
   const containerRef = useRef(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useDynamicHeightField(textRef, commentValue);
-  const {id} = useParams()
+  const { id } = useParams();
 
-  const comment = useSelector(state => state.comments.comments)
+  const comment = useSelector((state) => state.comments.comments);
 
   useEffect(() => {
-    dispatch(axiosAllComment(id))
-  }, [])
-
-  // console.log(comment);
+    dispatch(axiosAllComment(id));
+  }, []);
 
   const onExpand = () => {
     if (!isExpanded) {
@@ -54,24 +52,30 @@ const INITIAL_HEIGHT = 46;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(axiosComment({data:commentValue, id, userId: localStorage.id, rating: value}))
+    dispatch(
+      axiosComment({
+        data: commentValue,
+        id,
+        userId: localStorage.id,
+        rating: value,
+      })
+    );
     setCommentValue("");
     setIsExpanded(false);
   };
 
   return (
-    <div  className="container">
+    <div className="container">
       <form
-        
         onSubmit={onSubmit}
         ref={containerRef}
         className={cn("comment-box", {
           expanded: isExpanded,
           collapsed: !isExpanded,
-          modified: commentValue.length > 0
+          modified: commentValue.length > 0,
         })}
         style={{
-          minHeight: isExpanded ? outerHeight.current : INITIAL_HEIGHT
+          minHeight: isExpanded ? outerHeight.current : INITIAL_HEIGHT,
         }}
       >
         <div className="header">
@@ -80,12 +84,14 @@ const INITIAL_HEIGHT = 46;
               src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
               alt="User avatar"
             />
-            <span>{user.firstName} {user.lastName}</span>
+            <span>
+              {user.firstName} {user.lastName}
+            </span>
           </div>
         </div>
         <label htmlFor="comment">Оставьте рецензию на маршрут</label>
         <textarea
-          style={{border: 'none'}}
+          style={{ border: "none" }}
           ref={textRef}
           onClick={onExpand}
           onFocus={onExpand}
@@ -96,23 +102,27 @@ const INITIAL_HEIGHT = 46;
           name="comment"
           id="comment"
         />
-        
+
         <div className="actions">
           <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-        
+            name="simple-controlled"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+          />
+
           <button type="button" className="cancel" onClick={onClose}>
             Отмена
           </button>
-          <button type="submit" style={{
-            backgroundColor: 'green',
-            color: 'white',
-        }} disabled={commentValue.length < 1}>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "green",
+              color: "white",
+            }}
+            disabled={commentValue.length < 1}
+          >
             Отправить
           </button>
         </div>
@@ -121,4 +131,4 @@ const INITIAL_HEIGHT = 46;
   );
 }
 
-export default React.memo(CommentBox)
+export default React.memo(CommentBox);

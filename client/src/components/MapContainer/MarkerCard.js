@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CardRoutes({cardProps}) {
+export default function CardRoutes({ cardProps }) {
   const classes = useStyles();
   let variant, text;
 
@@ -63,11 +63,10 @@ export default function CardRoutes({cardProps}) {
             <CardContent>
               <div
                 style={{
-                  
                   display: "flex",
                   justifyContent: "space-between",
                   maxWidth: "95%",
-                  padding: '10px',
+                  padding: "10px",
                 }}
               >
                 <Rating
@@ -89,4 +88,3 @@ export default function CardRoutes({cardProps}) {
     </div>
   );
 }
-
